@@ -1,8 +1,0 @@
-<head>
-  <meta charset="UTF-8">
-  <title>openMSX &raquo; <?php echo $current; ?></title>
-  <meta name="keywords" content="openmsx msx emulator">
-  <link href="styles/keys_style.css" type="text/css" title="Keyboard" rel="stylesheet">
-  <link href="styles/blue_style.css" type="text/css" title="Blue" rel="alternate stylesheet">
-  <script src="styleswitcher.js" type="text/javascript"></script>
-</head>
