@@ -22,6 +22,7 @@
         <li><a class="internal" href="#cassetteplayer">cassetteplayer</a></li>
         <li><a class="internal" href="#cd">cd&lt;x&gt;</a></li>
         <li><a class="internal" href="#cycle">cycle / cycle_back</a></li>
+        <li><a class="internal" href="#cycle_machine">cycle_machine / cycle_back_machine</a></li>
         <li><a class="internal" href="#debug">debug</a></li>
         <li><a class="internal" href="#disk">disk&lt;x&gt; / virtual_drive</a></li>
         <li><a class="internal" href="#diskmanipulator">diskmanipulator</a></li>
@@ -30,6 +31,7 @@
         <li><a class="internal" href="#ext">ext / ext&lt;x&gt;</a></li>
         <li><a class="internal" href="#filepool">filepool</a></li>
         <li><a class="internal" href="#findcheat">findcheat</a></li>
+        <li><a class="internal" href="#get_clipboard_text">get_clipboard_text</a></li>
         <li><a class="internal" href="#hd">hd&lt;x&gt;</a></li>
         <li><a class="internal" href="#help">help</a></li>
         <li><a class="internal" href="#incr">incr</a></li>
@@ -38,11 +40,13 @@
         <li><a class="internal" href="#laserdiscplayer">laserdiscplayer</a></li>
         <li><a class="internal" href="#list_extensions">list_extensions</a></li>
         <li><a class="internal" href="#load_settings">load_settings</a></li>
+        <li><a class="internal" href="#ls">ls&lt;x&gt;</a></li>
         <li><a class="internal" href="#machine">machine</a></li>
         <li><a class="internal" href="#machines">create_machine / load_machine / activate_machine / list_machines / delete_machine</a></li>
         <li><a class="internal" href="#machine_info">machine_info</a></li>
         <li><a class="internal" href="#message">message</a></li>
         <li><a class="internal" href="#monitor_type">monitor_type</a></li>
+        <li><a class="internal" href="#msxcode2unicode">msxcode2unicode</a></li>
         <li><a class="internal" href="#mute_channels">mute_channels / unmute_channels / solo</a></li>
         <li><a class="internal" href="#nowind">nowind&lt;x&gt;</a></li>
         <li><a class="internal" href="#openmsx_info">openmsx_info</a></li>
@@ -60,7 +64,9 @@
         <li><a class="internal" href="#savestate">savestate / loadstate / list_savestates / delete_savestate</a></li>
         <li><a class="internal" href="#screenshot">screenshot</a></li>
         <li><a class="internal" href="#set">set</a></li>
+        <li><a class="internal" href="#set_clipboard_text">set_clipboard_text</a></li>
         <li><a class="internal" href="#setup">setup</a></li>
+        <li><a class="internal" href="#sha1sum">sha1sum</a></li>
         <li><a class="internal" href="#slotmap">slotmap</a></li>
         <li><a class="internal" href="#slotselect">slotselect</a></li>
         <li><a class="internal" href="#soundlog">soundlog</a></li>
@@ -70,6 +76,7 @@
         <li><a class="internal" href="#toggle">toggle</a></li>
         <li><a class="internal" href="#trainer">trainer</a></li>
         <li><a class="internal" href="#type">type / type_via_keyboard</a></li>
+        <li><a class="internal" href="#unicode2msxcode">unicode2msxcode</a></li>
         <li><a class="internal" href="#unset">unset</a></li>
         <li><a class="internal" href="#user_setting">user_setting</a></li>
         <li><a class="internal" href="#vdpregs">vdpregs</a></li>
@@ -119,13 +126,14 @@
         <li><a class="internal" href="#interleave_black_frame">interleave_black_frame</a></li>
         <li><a class="internal" href="#invalid_ppi_mode_callback">invalid_ppi_mode_callback</a></li>
         <li><a class="internal" href="#invalid_psg_directions_callback">invalid_psg_directions_callback</a></li>
-        <li><a class="internal" href="#msxjoystickN_config">msxjoystick&lt;n&gt;_config/joymega&lt;n&gt;_config</a></li>
-        <li><a class="internal" href="#joystickN_deadzone">joystick&lt;n&gt;_deadzone</a></li>
+        <li><a class="internal" href="#msxjoystickN_config">msxjoystick&lt;n&gt;_config/joymega&lt;n&gt;_config/joyhandle&lt;n&gt;_config/colecojoystick&lt;n&gt;_config</a></li>
+        <li><a class="internal" href="#joystickN_deadzone">joystick&lt;n&gt;_deadzone / joystick&lt;n&gt;_midpoint / joystick&lt;n&gt;_saturation</a></li>
         <li><a class="internal" href="#kbd_auto_toggle_code_kana_lock">kbd_auto_toggle_code_kana_lock</a></li>
         <li><a class="internal" href="#kbd_code_kana_host_key">kbd_code_kana_host_key</a></li>
         <li><a class="internal" href="#kbd_deadkey1_host_key">kbd_deadkey1_host_key</a></li>
         <li><a class="internal" href="#kbd_deadkey2_host_key">kbd_deadkey2_host_key</a></li>
         <li><a class="internal" href="#kbd_deadkey3_host_key">kbd_deadkey3_host_key</a></li>
+        <li><a class="internal" href="#kbd_disable_IME">kbd_disable_IME</a></li>
         <li><a class="internal" href="#kbd_mapping_mode">kbd_mapping_mode</a></li>
         <li><a class="internal" href="#kbd_numkeypad_always_enabled">kbd_numkeypad_always_enabled</a></li>
         <li><a class="internal" href="#kbd_numkeypad_enter_key">kbd_numkeypad_enter_key</a></li>
@@ -174,7 +182,7 @@
         <li><a class="internal" href="#soundchip_volume">&lt;soundchip&gt;_volume</a></li>
         <li><a class="internal" href="#throttle">throttle</a></li>
         <li><a class="internal" href="#too_fast_vram_access">too_fast_vram_access</a></li>
-        <li><a class="internal" href="#too_fast_vram_access_callback">too_fast_vram_access_callback</a></li>
+        <li><a class="internal" href="#too_fast_vram_access_callback">VDP.too_fast_vram_access_callback</a></li>
         <li><a class="internal" href="#touchpad_transform_matrix">touchpad_transform_matrix</a></li>
         <li><a class="internal" href="#turborpause">turborpause</a></li>
         <li><a class="internal" href="#umr_callback">umr_callback</a></li>
@@ -325,8 +333,8 @@
       <td>Mouse button &lt;n&gt; went up or down</td>
     </tr>
     <tr>
-      <td><code>mouse motion &lt;x&gt; &lt;y&gt;</code></td>
-      <td>Mouse motion of &lt;x&gt; and &lt;y&gt;</td>
+      <td><code>mouse motion</code></td>
+      <td>The mouse moved (use <code>-event</code> to get the coordinates)</td>
     </tr>
     <tr>
       <td><code>joy&lt;n&gt; button&lt;m&gt; &lt;up/down&gt;</code></td>
@@ -366,10 +374,13 @@
       <td>Show binding for the given event, optionally you can specify a layer</td>
     </tr>
     <tr>
-      <td><code>bind &lt;event&gt; [-layer &lt;layername&gt;] [-repeat] &lt;command&gt;</code></td>
+      <td><code>bind &lt;event&gt; [-layer &lt;layername&gt;] [-msx] [-repeat] [-event] &lt;command&gt;</code></td>
       <td>Make a new binding. Optionally make this binding in a specific layer.
       Also optionally it's possible to retrigger this binding periodically
-      (e.g. when a key is kept pressed).</td>
+      (e.g. when a key is kept pressed). With <code>-msx</code> the binding
+      only has effect when the MSX window has focus (not when the GUI has
+      focus). With <code>-event</code> the event is passed as an extra
+      argument (a list) to the command.</td>
     </tr>
     <tr>
       <td><code>bind -layers</code></td>
@@ -519,6 +530,24 @@
 
       <td>Go to play mode (when in record mode) and rewind the tape</td>
     </tr>
+
+    <tr>
+      <td><code>cassetteplayer getpos</code></td>
+
+      <td>Show the current position of the tape (in seconds)</td>
+    </tr>
+
+    <tr>
+      <td><code>cassetteplayer setpos &lt;position&gt;</code></td>
+
+      <td>Wind the tape to the given position (in seconds)</td>
+    </tr>
+
+    <tr>
+      <td><code>cassetteplayer getlength</code></td>
+
+      <td>Show the total length of the tape (in seconds)</td>
+    </tr>
   </table>
 
   <h3><a id="cd">cd&lt;x&gt;</a></h3>
@@ -588,9 +617,31 @@
   </div>
 
 
+  <h3><a id="cycle_machine">cycle_machine / cycle_back_machine</a></h3>
+
+  <p>Cycle through the current running machines.</p>
+
+  <p><code>cycle_back_machine</code> does the same as <code>cycle_machine</code>, but it goes in the opposite direction.</p>
+
+  <div class="subsectiontitle">
+    usage:
+  </div>
+
+  <table>
+    <tr>
+      <td><code>cycle_machine</code></td>
+      <td>Changes the current machine to the next one in the cycle</td>
+    </tr>
+    <tr>
+      <td><code>cycle_back_machine</code></td>
+      <td>Changes the current machine to the previous one in the cycle</td>
+    </tr>
+  </table>
+
+
   <h3><a id="debug">debug</a></h3>
 
-  <p>This command provides access to the debugger functionality of openMSX. It's meant to be used by an external debugger (see also <a class="external" href="openmsx-control.html">Controlling openMSX from External Applications</a>). The general format of the debug command is:</p>
+  <p>This command provides access to the debugger functionality of openMSX. It can be used by an external debugger (see also <a class="external" href="openmsx-control.html">Controlling openMSX from External Applications</a>), but openMSX has since evolved to include its own debugger. The general format of the debug command is:</p>
 
   <p><code>debug &lt;subcommand&gt; [&lt;extra arguments&gt;]</code></p>
 
@@ -663,36 +714,311 @@
 
     <tr>
       <td><code>debug breakpoint &lt;subcommand&gt;</code></td>
-      <td>Breakpoint related commands. Type <code>help debug breakpoint</code> for more details.</td>
+      <td><a class="internal" href="#debug-breakpoint">Breakpoint related commands</a>.</td>
     </tr>
 
     <tr>
       <td><code>debug watchpoint &lt;subcommand&gt;</code></td>
-      <td>Watchpoint related commands. Type <code>help debug watchpoint</code> for more details.</td>
+      <td><a class="internal" href="#debug-watchpoint">Watchpoint related commands</a>.</td>
     </tr>
 
     <tr>
       <td><code>debug watchexpr &lt;subcommand&gt;</code></td>
-      <td>Watch expression related commands. Type <code>help debug watchexpr</code> for more details.</td>
+      <td><a class="internal" href="#debug-watchexpr">Watch expression related commands</a>.</td>
     </tr>
 
     <tr>
       <td><code>debug condition &lt;subcommand&gt;</code></td>
-      <td>Condition related commands. Type <code>help debug condition</code> for more details.</td>
+      <td><a class="internal" href="#debug-condition">Debug condition related commands</a>.</td>
     </tr>
 
     <tr>
       <td><code>debug probe &lt;subcommand&gt;</code></td>
-      <td>Probe related commands. Type <code>help debug probe</code> for more details.</td>
+      <td><a class="internal" href="#debug-probe">Probe related commands</a>.</td>
+    </tr>
+
+    <tr>
+      <td><code>debug symbols &lt;subcommand&gt;</code></td>
+      <td><a class="internal" href="#debug-symbols">Manage debug symbols</a>.<br />
+      openMSX also provides a shortcut to access debug symbol addresses via Tcl dictionary <code>$::sym(&lt;symbol-name&gt;)</code>.</td>
+    </tr>
+
+    <tr>
+      <td><code>debug trace &lt;subcommand&gt;</code></td>
+      <td><a class="internal" href="#debug-trace">Trace related commands</a>.</td>
     </tr>
 
     <tr>
       <td><code>debug disasm [&lt;addr&gt;]</code></td>
       <td>Disassemble instructions at PC or given address</td>
     </tr>
+
   </table>
 
   <p>This command is much better documented in openMSX itself. Type <code>help debug</code> or <code>help debug &lt;subcommand&gt;</code> for more detailed help.</p>
+
+  <div class="subsectiontitle">
+    <a id="debug-breakpoint">breakpoint subcommands:</a>
+  </div>
+
+  <table>
+    <tr>
+      <td><code>debug breakpoint list</code></td>
+      <td>List all active breakpoints. The result is a Tcl dict where each key is a breakpoint ID and each value is another dict containing the properties of that breakpoint (see <code>create</code> below).</td>
+    </tr>
+
+    <tr>
+      <td><code>debug breakpoint create [&lt;property-name&gt; &lt;property-value&gt;]...</code></td>
+      <td>Create a new breakpoint with the given properties and return its ID. Supported properties:
+        <ul>
+          <li><code>-address</code>: the address where the breakpoint should trigger. An address is just a number [0..0xFFFF], but can also be dynamically evaluated from a known symbol by specifying <code>{$sym(MySymbol)}</code>.</li>
+          <li><code>-condition</code>: a Tcl expression that must evaluate to true for the breakpoint to trigger (default = no condition).</li>
+          <li><code>-command</code>: a Tcl command that should be executed when the breakpoint triggers (default = <code>debug break</code>).</li>
+          <li><code>-enabled</code>: set to false to (temporarily) disable this breakpoint.</li>
+          <li><code>-once</code>: if true, the breakpoint is automatically removed after it triggered (default = false, meaning recurring).</li>
+        </ul>
+      </td>
+    </tr>
+
+    <tr>
+      <td><code>debug breakpoint configure &lt;id&gt; [&lt;property-name&gt; &lt;property-value&gt;]...</code></td>
+      <td>Change one or more properties of an existing breakpoint. The same properties as for <code>create</code> are supported.</td>
+    </tr>
+
+    <tr>
+      <td><code>debug breakpoint remove &lt;id&gt;</code></td>
+      <td>Remove the breakpoint with the given ID.</td>
+    </tr>
+  </table>
+
+  <div class="subsectiontitle">
+    <a id="debug-watchpoint">watchpoint subcommands:</a>
+  </div>
+
+  <table>
+    <tr>
+      <td><code>debug watchpoint list</code></td>
+      <td>List all active watchpoints. The result is a Tcl dict where each key is a watchpoint ID and each value is another dict containing the properties of that watchpoint (see <code>create</code> below).</td>
+    </tr>
+
+    <tr>
+      <td><code>debug watchpoint create [&lt;property-name&gt; &lt;property-value&gt;]...</code></td>
+      <td>Create a new watchpoint with the given properties and return its ID. Supported properties:
+        <ul>
+          <li><code>-type</code>: one of <code>read_io</code>, <code>write_io</code>, <code>read_mem</code> or <code>write_mem</code>.</li>
+          <li><code>-address</code>: the address(es) where the watchpoint should trigger, either a single address or a <code>{begin end}</code> pair, e.g. <code>-address {0x8000 0xBFFF}</code>. An address is just a number [0..0xFFFF], but can also be dynamically evaluated from a known symbol by specifying <code>{$sym(MySymbol)}</code>.</li>
+          <li><code>-condition</code>: a Tcl expression that must evaluate to true for the watchpoint to trigger (default = no condition).</li>
+          <li><code>-command</code>: a Tcl command that should be executed when the watchpoint triggers (default = <code>debug break</code>).</li>
+          <li><code>-enabled</code>: set to false to (temporarily) disable this watchpoint.</li>
+          <li><code>-once</code>: if true, the watchpoint is automatically removed after it triggered (default = false, meaning recurring).</li>
+        </ul>
+      </td>
+    </tr>
+
+    <tr>
+      <td><code>debug watchpoint configure &lt;id&gt; [&lt;property-name&gt; &lt;property-value&gt;]...</code></td>
+      <td>Change one or more properties of an existing watchpoint. The same properties as for <code>create</code> are supported.</td>
+    </tr>
+
+    <tr>
+      <td><code>debug watchpoint remove &lt;id&gt;</code></td>
+      <td>Remove the watchpoint with the given ID.</td>
+    </tr>
+  </table>
+
+  <div class="subsectiontitle">
+    <a id="debug-condition">debug condition subcommands:</a>
+  </div>
+
+  <p>A debug condition is evaluated continuously while the emulated MSX is
+  running; unlike breakpoints and watchpoints it is not tied to a specific
+  address or I/O access.</p>
+
+  <table>
+    <tr>
+      <td><code>debug condition list</code></td>
+      <td>List all active debug conditions. The result is a Tcl dict where each key is a debug condition ID and each value is another dict containing the properties of that condition (see <code>create</code> below).</td>
+    </tr>
+
+    <tr>
+      <td><code>debug condition create [&lt;property-name&gt; &lt;property-value&gt;]...</code></td>
+      <td>Create a new debug condition with the given properties and return its ID. Supported properties:
+        <ul>
+          <li><code>-condition</code>: a Tcl expression that must evaluate to true for the debug condition to trigger (default = no condition).</li>
+          <li><code>-command</code>: a Tcl command that should be executed when the debug condition triggers (default = <code>debug break</code>).</li>
+          <li><code>-enabled</code>: set to false to (temporarily) disable this debug condition.</li>
+          <li><code>-once</code>: if true, the debug condition is automatically removed after it triggered (default = false, meaning recurring).</li>
+        </ul>
+      </td>
+    </tr>
+
+    <tr>
+      <td><code>debug condition configure &lt;id&gt; [&lt;property-name&gt; &lt;property-value&gt;]...</code></td>
+      <td>Change one or more properties of an existing debug condition. The same properties as for <code>create</code> are supported.</td>
+    </tr>
+
+    <tr>
+      <td><code>debug condition remove &lt;id&gt;</code></td>
+      <td>Remove the debug condition with the given ID.</td>
+    </tr>
+  </table>
+
+  <div class="subsectiontitle">
+    <a id="debug-probe">probe subcommands:</a>
+  </div>
+
+  <p>Probes are instrumentation points inside openMSX itself; they expose
+  emulator-internal events (such as a pending Z80 IRQ or an executing VDP
+  command) that cannot be observed from inside the emulated MSX. Use
+  <code>debug probe list</code> to see which probes exist on the currently
+  emulated machine.</p>
+
+  <table>
+    <tr>
+      <td><code>debug probe list</code></td>
+      <td>Returns a list of all probes.</td>
+    </tr>
+
+    <tr>
+      <td><code>debug probe desc &lt;probe&gt;</code></td>
+      <td>Returns a description of this probe.</td>
+    </tr>
+
+    <tr>
+      <td><code>debug probe read &lt;probe&gt;</code></td>
+      <td>Returns the current value of this probe.</td>
+    </tr>
+
+    <tr>
+      <td><code>debug probe set_bp &lt;probe&gt; [-once] [&lt;cond&gt;] [&lt;cmd&gt;]</code></td>
+      <td>Set a breakpoint on the given probe and return its ID. When <code>-once</code> is given, the breakpoint is automatically removed after it triggered. <code>&lt;cond&gt;</code> is an optional Tcl expression that must evaluate to true for the breakpoint to trigger; <code>&lt;cmd&gt;</code> is an optional Tcl command that should be executed when the breakpoint triggers (default = <code>debug break</code>).</td>
+    </tr>
+
+    <tr>
+      <td><code>debug probe remove_bp &lt;id&gt;</code></td>
+      <td>Remove the probe breakpoint with the given ID.</td>
+    </tr>
+
+    <tr>
+      <td><code>debug probe list_bp</code></td>
+      <td>Returns all breakpoints that are set on probes, as a Tcl dict where each key is a probe-breakpoint ID and each value contains the probe name, the condition and the command.</td>
+    </tr>
+  </table>
+
+  <div class="subsectiontitle">
+    <a id="debug-watchexpr">watch expression subcommands:</a>
+  </div>
+
+  <p>Watch expressions are mostly a GUI feature: they are evaluated while the
+  emulated MSX is running and their values are shown in the debugger view of
+  the openMSX GUI (menu bar &gt; Debugger &gt; Watch expression).</p>
+
+  <table>
+    <tr>
+      <td><code>debug watchexpr list</code></td>
+      <td>List all active watch expressions. The result is a Tcl dict where each key is a watch expression ID and each value is another dict containing the properties of that expression (see <code>create</code> below).</td>
+    </tr>
+
+    <tr>
+      <td><code>debug watchexpr create [&lt;property-name&gt; &lt;property-value&gt;]...</code></td>
+      <td>Create a new watch expression with the given properties and return its ID. Supported properties:
+        <ul>
+          <li><code>-description</code>: optional description for the expression.</li>
+          <li><code>-expression</code>: the actual Tcl expression.</li>
+          <li><code>-format</code>: optional format specifier.</li>
+        </ul>
+      </td>
+    </tr>
+
+    <tr>
+      <td><code>debug watchexpr configure &lt;id&gt; [&lt;property-name&gt; &lt;property-value&gt;]...</code></td>
+      <td>Change one or more properties of an existing watch expression. The same properties as for <code>create</code> are supported.</td>
+    </tr>
+
+    <tr>
+      <td><code>debug watchexpr remove &lt;id&gt;</code></td>
+      <td>Remove the watch expression with the given ID.</td>
+    </tr>
+  </table>
+
+  <div class="subsectiontitle">
+    <a id="debug-symbols">symbols subcommands:</a>
+  </div>
+
+  <p>Symbols map names to memory addresses and typically come from the
+  assembler or compiler build of the MSX program being debugged. Loaded
+  symbols can be used in breakpoint conditions and other Tcl expressions;
+  an easier syntax to get the value of a symbol based on its name is the
+  Tcl dictionary <code>$::sym(&lt;symbol-name&gt;)</code>.</p>
+
+  <table>
+    <tr>
+      <td><code>debug symbols types</code></td>
+      <td>Returns a list of supported symbol file types.</td>
+    </tr>
+
+    <tr>
+      <td><code>debug symbols load &lt;filename&gt; [&lt;type&gt;]</code></td>
+      <td>Load a symbol file; the type is auto-detected if none is given.</td>
+    </tr>
+
+    <tr>
+      <td><code>debug symbols remove &lt;filename&gt;</code></td>
+      <td>Remove a previously loaded symbol file.</td>
+    </tr>
+
+    <tr>
+      <td><code>debug symbols files</code></td>
+      <td>Returns a list of all loaded symbol files.</td>
+    </tr>
+
+    <tr>
+      <td><code>debug symbols lookup [-filename &lt;filename&gt;] [-name &lt;name&gt;] [-value &lt;value&gt;]</code></td>
+      <td>Returns a list of symbols in an optionally given file and/or with an optionally given name and/or with an optionally given value.</td>
+    </tr>
+  </table>
+
+  <div class="subsectiontitle">
+    <a id="debug-trace">trace subcommands:</a>
+  </div>
+
+  <p>Traces collect data points while the emulated MSX is running. Each data
+  point stores a value together with the emulation time at which it was
+  added. Traces are typically filled from Tcl code (for example from the
+  command of a <a class="internal" href="#debug-condition">debug condition</a>)
+  or automatically via <code>debug trace probe</code>. The collected data can
+  be inspected with the trace viewer of the openMSX GUI.</p>
+
+  <table>
+    <tr>
+      <td><code>debug trace add &lt;name&gt; [&lt;value&gt;] [-merge] [-description &lt;text&gt;] [-type &lt;t&gt;] [-format &lt;f&gt;]</code></td>
+      <td>Add a new data point to the trace with the given name (the trace is created on first use); the timestamp of the data point is the current emulation time. The optional value can be an integer, a floating point number or a string; if no value is given, a void value is used. Flags: <code>-merge</code> ignores consecutive equal values; <code>-description &lt;text&gt;</code> gives a description for this trace; <code>-type &lt;t&gt;</code> must be one of <code>void</code>, <code>bool</code>, <code>int</code>, <code>double</code> or <code>string</code>; <code>-format &lt;f&gt;</code> must be one of <code>bin</code>, <code>dec</code> or <code>hex</code> (only relevant for type int). Typically the latter three options are only used once, while <code>-merge</code> is repeated on every invocation.</td>
+    </tr>
+
+    <tr>
+      <td><code>debug trace list [&lt;name&gt;]</code></td>
+      <td>Without arguments, list the names of all created traces. With a name argument, list all data points of the given trace in chronological order; each data point consists of a timestamp (seconds since emulation start) and a value.</td>
+    </tr>
+
+    <tr>
+      <td><code>debug trace drop [&lt;name&gt;]</code></td>
+      <td>Without arguments, drop all traces and their data points. With a name argument, drop only the trace with the given name (this also removes traces that were being filled automatically via <code>debug trace probe</code>).</td>
+    </tr>
+
+    <tr>
+      <td><code>debug trace probe &lt;probe&gt;</code></td>
+      <td>Start collecting changes of the given <a class="internal" href="#debug-probe">probe</a>: as if on each change there's an automatic <code>debug trace add &lt;name&gt; &lt;value&gt;</code>.</td>
+    </tr>
+  </table>
+
+  <p>A convenient wrapper around these subcommands is the <code>cpu_trace</code>
+  Tcl procedure (defined in <code>scripts/_trace.tcl</code>): execute e.g.
+  <code>cpu_trace instr A HL</code> to trace the executed instructions together
+  with the A and HL register values, and execute <code>cpu_trace</code> without
+  arguments to disable tracing again. Note this can be expensive and/or can
+  quickly consume a lot of memory: the Z80 (and certainly the R800) can execute
+  almost one million instructions per second, so it is recommended to enable
+  only those items you need and to limit the trace duration.</p>
 
   <p>Many examples of usage of the debug command can be found in the scripts that come with openMSX (in the <code>share/scripts</code> directory). We also list a few here.
   </p>
@@ -704,18 +1030,19 @@
   <div class="examples">
     <ul>
       <li>break (only!) after 0 is written to 0x8000):<br/>
-         <code>debug watchpoint create write_mem 0x8000 {[debug read "memory" 0x8000] ==
-0x00}</code></li>
+         <code>debug watchpoint create -type write_mem -address 0x8000 -condition {[debug read "memory" 0x8000] == 0x00}</code></li>
       <li>break on address 0xF37D, but only when Z80 register C has the value 0x2F:<br/>
-         <code>debug breakpoint create 0xF37D {[reg C] == 0x2F}</code></li>
+         <code>debug breakpoint create -address 0xF37D -condition {[reg C] == 0x2F}</code></li>
       <li>break when CPU reads from any addresses between 0xFBE5 and 0xFBEF:<br/>
-         <code>debug watchpoint create read_mem {0xFBE5 0xFBEF}</code></li>
+         <code>debug watchpoint create -type read_mem -address {0xFBE5 0xFBEF}</code></li>
       <li>break after a write was done to I/O port 0x99, but only when Z80 register A has a value of 0x81:<br/>
-         <code>debug watchpoint create write_io 0x99 {[reg A] == 0x81}</code></li>
+         <code>debug watchpoint create -type write_io -address 0x99 -condition {[reg A] == 0x81}</code></li>
       <li>break as soon as there is a pending Z80 IRQ (even when in DI mode):<br/>
          <code>debug probe set_bp z80.pendingIRQ</code></li>
       <li>break when register HL has the value 1234:<br/>
-         <code>debug condition create {[reg hl] == 1234}</code></li>
+         <code>debug condition create -condition {[reg hl] == 1234}</code></li>
+      <li>list the contents of all symbol files previously loaded by the Symbol Manager or by the <code>debug symbols load</code> subcommand:<br/>
+         <code>debug symbols lookup</code></li>
     </ul>
   </div>
 
@@ -887,7 +1214,7 @@
     </tr>
   </table>
 
-  <p>An example of the default file pools for a Windows 7 system with user Quibus:</p>
+  <p>An example of the default file pools for a Windows system with user Quibus:</p>
 <pre>
 1: C:/Users/Quibus/Documents/openMSX/share/systemroms  [system_rom]
 2: C:/Users/Quibus/Documents/openMSX/share/software  [rom disk tape]
@@ -910,6 +1237,22 @@
   </ol>
 
   <p>Vampier made a video tutorial on how to use <code>findcheat</code>, you can find it <a class="external" href="http://www.youtube.com/watch?v=F11ltfkCtKo">here</a>.</p>
+
+  <h3><a id="get_clipboard_text">get_clipboard_text</a></h3>
+
+  <p>Shows the (text) content of the clipboard as a string.</p>
+
+  <div class="subsectiontitle">
+    usage:
+  </div>
+
+  <table>
+    <tr>
+      <td><code>get_clipboard_text</code></td>
+
+      <td>Returns the text content of the clipboard as a string.</td>
+    </tr>
+  </table>
 
 
   <h3><a id="hd">hd&lt;x&gt;</a></h3>
@@ -1050,7 +1393,7 @@
 
   <p>Controls the Laserdisc player; a Laserdisc can be inserted or ejected. When a real Laserdisc player is connected to an MSX, no other controls are available either.</p>
 
-  <p>Note that this command is only available when the Pioneer PX-7 or Pioneer PX-V60 MSX machine is being emulated</p>
+  <p>Note that this command is only available when the Pioneer PX-7 or Pioneer PX-V60 MSX machine is being emulated, and only when openMSX was built with Laserdisc support (Laserdisc support is an optional compile-time feature)</p>
 
   <div class="subsectiontitle">
     usage:
@@ -1102,6 +1445,39 @@
       <td>Load settings from the given file</td>
     </tr>
   </table>
+
+  <h3><a id="ls">ls&lt;x&gt;</a></h3>
+
+  <p>Change the disk image of an LS-120 drive. The commands <code>lsa</code>,
+  <code>lsb</code> etc. are assigned to all available LS-120 drives in the
+  MSX. LS-120 drives are e.g. present in the SCSI interface extensions
+  <code>Gouda_SCSI</code>, <code>ESE_MEGA-SCSI</code> and
+  <code>ESE_WAVE-SCSI</code>.</p>
+
+  <div class="subsectiontitle">
+    usage:
+  </div>
+
+  <table>
+    <tr>
+      <td><code>lsa &lt;disk image&gt;</code></td>
+
+      <td>Use disk image for LS-120 drive "lsa"</td>
+    </tr>
+
+    <tr>
+      <td><code>lsa eject</code></td>
+
+      <td>Eject the disk from LS-120 drive "lsa"</td>
+    </tr>
+
+    <tr>
+      <td><code>lsa</code></td>
+
+      <td>Show current disk image for LS-120 drive "lsa"</td>
+    </tr>
+  </table>
+
 
   <h3><a id="machine">machine</a></h3>
 
@@ -1237,6 +1613,7 @@
     <code>message "Something bad happened" error</code><br />
   </div>
 
+
   <h3><a id="monitor_type">monitor_type</a></h3>
 
   <p>Select a monitor color profile.</p>
@@ -1268,6 +1645,41 @@
   <div class="note">
     Note: This command is a convenience wrapper around the <code><a class="internal" href="#color_matrix">color_matrix</a></code> setting.
   </div>
+
+
+  <h3><a id="msxcode2unicode">msxcode2unicode</a></h3>
+
+  <p>Returns a unicode string converted from an MSX-string, i.e., a string based on MSX character codes.</p>
+  <p>The optional fallback used for each character that cannot be mapped for the
+current MSX model can be:</p>
+  <ul>
+    <li>omitted: then space will be used as fallback character.</li>
+    <li>an integer number: then this number will be used as unicode point to be the
+  the fallback character.</li>
+    <li>a Tcl proc, which expects one input character and must return one unicode
+  point.</li>
+  </ul>
+
+  <div class="subsectiontitle">
+    usage:
+  </div>
+  <table>
+    <tr>
+      <td><code>msxcode2unicode &lt;msx-string&gt; [&lt;fallback&gt;]</code></td>
+    </tr>
+  </table>
+  <div class="subsectiontitle">
+    examples:
+  </div>
+  <div class="examples">
+    <table>
+      <tr>
+        <td><code>msxcode2unicode [format %c 1]</code></td>
+        <td>Prints black smiley face if emulating an 'international' MSX model</td>
+      </tr>
+    </table>
+  </div>
+
 
   <h3><a id="mute_channels">mute_channels / unmute_channels / solo</a></h3>
 
@@ -1528,7 +1940,7 @@
   </table>
 
   <div class="note">
-    Note: This command is a convenience wrapper around the <code><a class="internal" href="#soundchip_vibrato_frequency">PSG_vibrato_frequency</a></code>, <code><a class="internal" href="#soundchip_vibrato_percent">PSG_vibrato_percent</a></code>, <code><a class="internal" href="#soundchip_detune_frequency">PSG_detune_frequency</a></code> and <code><a class="internal" href="#soundchip_detune_percent">PSG_detune_percent</a></code> settings.
+    Note: This command is a convenience wrapper around the <code><a class="internal" href="#psg_vibrato_frequency">PSG_vibrato_frequency</a></code>, <code><a class="internal" href="#psg_vibrato_percent">PSG_vibrato_percent</a></code>, <code><a class="internal" href="#psg_detune_frequency">PSG_detune_frequency</a></code> and <code><a class="internal" href="#psg_detune_percent">PSG_detune_percent</a></code> settings.
   </div>
 
   <h3><a id="record">record</a></h3>
@@ -1847,6 +2259,7 @@
     </tr>
   </table>
 
+
   <h3><a id="set">set</a></h3>
 
   <p>Change or query the value of various settings. See also: <code><a class="internal" href="#unset">unset</a></code>.</p>
@@ -1882,6 +2295,31 @@
     <code>set deinterlace on</code><br />
   </div>
 
+
+  <h3><a id="set_clipboard_text">set_clipboard_text</a></h3>
+
+  <p>Sends the given string to the clipboard.</p>
+
+  <div class="subsectiontitle">
+    usage:
+  </div>
+
+  <table>
+    <tr>
+      <td><code>set_clipboard_text &lt;text&gt;</code></td>
+
+      <td>Sends the text to the clipboard as a string.</td>
+    </tr>
+  </table>
+
+  <div class="subsectiontitle">
+    examples:
+  </div>
+  <div class="examples">
+    <code>set_clipboard_text "Hello world!"</code><br />
+  </div>
+
+
   <h3><a id="setup">setup</a></h3>
 
   <p>Switch to a previously saved setup.</p>
@@ -1902,6 +2340,24 @@
     Note: The machine handle is mostly used by external applications controlling openMSX (see also <a class="external" href="openmsx-control.html">Controlling openMSX from External Applications</a>). For interactive use you can omit the machine handle to have the commands operate on the current machine.
   </div>
 
+
+  <h3><a id="sha1sum">sha1sum</a></h3>
+
+  <p>Calculates sha1 value for the given file. If the file is (g)zipped the sha1 is calculated on the unzipped version.</p>
+
+  <div class="subsectiontitle">
+    usage:
+  </div>
+
+  <table>
+    <tr>
+      <td><code>sha1sum &lt;filename&gt;</code></td>
+
+      <td>Returns a string with the sha1 value for the specified file.</td>
+    </tr>
+  </table>
+
+
   <h3><a id="slotmap">slotmap</a></h3>
 
   <p>Shows what devices are inserted into which slots. The related command <code><a class="internal" href="#iomap">iomap</a></code> shows a similar overview, but for I/O mapped devices.</p>
@@ -1918,6 +2374,7 @@
     </tr>
   </table>
 
+
   <h3><a id="slotselect">slotselect</a></h3>
 
   <p>Shows the currently selected slots. To see what devices are located in the slots, use the <code><a class="internal" href="#slotmap">slotmap</a></code> command.</p>
@@ -1933,6 +2390,7 @@
       <td>Shows the currently selected slot for each page</td>
     </tr>
   </table>
+
 
   <h3><a id="soundlog">soundlog</a></h3>
 
@@ -2009,6 +2467,7 @@
     Note: These commands are pretty low level. The <code><a class="internal" href="#savestate">savestate</a></code> and <code><a class="internal" href="#savestate">loadstate</a></code> scripts are built on top of this and are much more convenient to use.
   </div>
 
+
   <h3><a id="store_setup">store_setup</a></h3>
 
   <p>Store the current setup in a file.</p>
@@ -2038,6 +2497,7 @@
   <p>Storing the current setup can also be done with the GUI via <span class="menu-reference">Main menu bar
 &rarr; Machine &rarr; Save setup</span>.</p>
 
+
   <h3><a id="test_machine">test_machine / test_all_machines / test_all_extensions</a></h3>
 
   <p>Test whether the given MSX machine configuration works. For example whether you have all required system ROMs for this machine. See also <code><a class="internal" href="#machines">load_machine</a></code>. This is an alternative to using the equivalent option in the GUI <span class="menu-reference">Main menu bar
@@ -2054,6 +2514,7 @@
   </table>
 
   <p>Use the convenience commands <code>test_all_machines</code> and <code>test_all_extensions</code> to get a full overview on which system ROMs you are still missing.</p>
+
 
   <h3><a id="toggle">toggle</a></h3>
 
@@ -2080,6 +2541,7 @@
     <code>toggle mute</code><br />
     <code>toggle throttle</code>
   </div>
+
 
   <h3><a id="trainer">trainer</a></h3>
 
@@ -2131,6 +2593,7 @@
     <code>trainer "Circus Charlie" 1 2</code><br />
     <code>trainer Pippols lives "jump shoes"</code>
   </div>
+
 
   <h3><a id="type">type / type_via_keyboard</a></h3>
 
@@ -2199,6 +2662,39 @@
     </tr>
   </table>
 
+
+  <h3><a id="unicode2msxcode">unicode2msxcode</a></h3>
+
+  <p>Returns an MSX string, i.e. a string based on MSX character codes, converted from a unicode string.</p>
+
+  <p>The optional fallback used for each character that cannot be mapped for the current MSX model can be:</p>
+  <ul>
+    <li>omitted: then space will be used as fallback character.</li>
+    <li>an integer number: then this number will be used as MSX character number to to be the fallback character.</li>
+    <li>a Tcl proc, which expects one input character and must return one MSX character number.</li>
+  </ul>
+
+  <div class="subsectiontitle">
+    usage:
+  </div>
+  <table>
+    <tr>
+      <td><code>unicode2msxcode &lt;unicode-string&gt; [&lt;fallback&gt;]</code></td>
+    </tr>
+  </table>
+  <div class="subsectiontitle">
+    examples:
+  </div>
+  <div class="examples">
+    <table>
+      <tr>
+        <td><code>unicode2msxcode [format %c 0x263a]</code></td>
+        <td>Prints MSX code for a smiley face if emulating an 'international' MSX model</td>
+      </tr>
+    </table>
+  </div>
+
+
   <h3><a id="unset">unset</a></h3>
 
   <p>Undefines a Tcl variable. When used on openMSX settings, they are reverted to their default value. See also: <code><a class="internal" href="#set">set</a></code>.</p>
@@ -2221,7 +2717,9 @@
     </tr>
   </table>
 
+
   <h3><a id="user_setting">user_setting</a></h3>
+
   <p>This command is only meant to be used in Tcl scripts. It allows to create Tcl variables that act very much like built-in openMSX settings. They have a description (can be queried with "<code>help set &lt;setting-name&gt;</code>") and their value is stored saved/restored when openMSX is quit/restarted.</p>
 
   <!-- do we really have to repeat the help text from the openmsx source code here? -->
@@ -2255,7 +2753,15 @@
   <table>
     <tr>
       <td><code>about</code></td>
-      <td>Search command and setting help-texts for the given keyword</td>
+      <td>Searches command and setting help-texts for the given keyword</td>
+    </tr>
+    <tr>
+      <td><code>address_in_slot</code></td>
+      <td>Tests whether an address is inside a certain slot</td>
+    </tr>
+    <tr>
+      <td><code>casload</code>, <code>cassave</code>, <code>caslist</code>, <code>casrun</code>, <code>caspos</code>, <code>caseject</code></td>
+      <td>Use CAS files directly via the BIOS cassette routines, without converting them to WAV</td>
     </tr>
     <tr>
       <td><code>cpuregs</code></td>
@@ -2267,23 +2773,31 @@
     </tr>
     <tr>
       <td><code>disasm</code></td>
-      <td>Print disassembled instructions at the given memory location</td>
+      <td>Prints disassembled instructions at the given memory location</td>
     </tr>
     <tr>
       <td><code>getcolor</code></td>
-      <td>Query V99x8 palette settings</td>
+      <td>Queries V99x8 palette settings</td>
     </tr>
     <tr>
       <td><code>get_active_cpu</code></td>
       <td>Returns the active cpu, z80 or r800</td>
     </tr>
     <tr>
+      <td><code>get_breakpoints_dir</code></td>
+      <td>Returns breakpoints directory for this user</td>
+    </tr>
+    <tr>
       <td><code>get_color_count</code></td>
       <td>Gives an overview of the used colors in the current screen</td>
     </tr>
     <tr>
+      <td><code>get_mapper_size</code></td>
+      <td>Returns the size of the memory mapper in a given slot or 0 when there is no memory mapper in the slot</td>
+    </tr>
+    <tr>
       <td><code>get_screen</code></td>
-      <td>Capture the content of an MSX text screen in a Tcl string</td>
+      <td>Captures the content of an MSX text screen in a Tcl string</td>
     </tr>
     <tr>
       <td><code>get_screen_mode</code></td>
@@ -2295,7 +2809,7 @@
     </tr>
     <tr>
       <td><code>guess_title</code></td>
-      <td>Use heuristics to guess the title of the current game (cartridge, disk or tape). For specific media use <code>guess_cassette_title</code>, <code>guess_disk_title</code> or <code>guess_rom_title</code>.</td>
+      <td>Uses heuristics to guess the title of the current game (cartridge, disk or tape). For specific media use <code>guess_cassette_title</code>, <code>guess_disk_title</code> or <code>guess_rom_title</code>.</td>
     </tr>
     <tr>
       <td><code>listing</code></td>
@@ -2303,47 +2817,115 @@
     </tr>
     <tr>
       <td><code>load_debuggable</code></td>
-      <td>Write the content of a file to a openMSX debuggable</td>
+      <td>Writes the content of a file to a openMSX debuggable</td>
+    </tr>
+    <tr>
+      <td><code>load_breakpoints</code></td>
+      <td>Loads all breakpoint subtypes (breakpoints, watchpoints and conditions) from a given file</td>
+    </tr>
+    <tr>
+      <td><code>mog_password</code>, <code>mog_password_show</code></td>
+      <td>Extracts the password currently shown in The Maze of Galious, and saves it to a file or only shows it. A saved password can be typed back into the game with <code><a class="internal" href="#type">type_from_file</a> -release</code></td>
     </tr>
     <tr>
       <td><code>multi_screenshot</code></td>
-      <td>Take screenshots of multiple successive frames</td>
+      <td>Takes screenshots of multiple successive frames</td>
+    </tr>
+    <tr>
+      <td><code>next_frame</code></td>
+      <td>Emulates until the (start of) the next frame, then pause emulation</td>
+    </tr>
+    <tr>
+      <td><code>prev_frame</code></td>
+      <td>Rewinds to the (start of) the previous frame</td>
+    </tr>
+    <tr>
+      <td><code>advance_frame</code>, <code>reverse_frame</code></td>
+      <td>Emulates forward/backward for the duration of one (or N) frames</td>
     </tr>
     <tr>
       <td><code>pc_in_slot</code></td>
-      <td>Check whether CPU is executing from the specified slot (useful as breakpoint condition)</td>
+      <td>Checks whether CPU is executing from the specified slot (useful as breakpoint condition)</td>
     </tr>
     <tr>
       <td><code>peek</code></td>
-      <td>Read a byte from the given memory location</td>
+      <td>Reads a byte from the given memory location</td>
     </tr>
     <tr>
       <td><code>peek16</code></td>
-      <td>Read a 16 bit word from the given memory location</td>
+      <td>Reads a 16 bit word from the given memory location</td>
     </tr>
     <tr>
-      <td><code>poke</code></td>
-      <td>Write a byte to the given memory location. Use <code>dpoke</code> to only write if the value to be written is different from the current value.</td>
+      <td><code>peek16_BE</code></td>
+      <td>Reads a 16 bit word (big endian) from the given memory location</td>
     </tr>
     <tr>
-      <td><code>poke16</code></td>
-      <td>Write a 16 bit word to the given memory location</td>
+      <td><code>peek16_LE</code></td>
+      <td>Reads a 16 bit word (little endian) from the given memory location</td>
+    </tr>
+    <tr>
+      <td><code>peek8</code></td>
+      <td>Reads a byte from the given memory location</td>
+    </tr>
+    <tr>
+      <td><code>peek_s16</code></td>
+      <td>Reads a signed 16 bit word from the given memory location</td>
+    </tr>
+    <tr>
+      <td><code>peek_s16_BE</code></td>
+      <td>Reads a signed 16 bit word (big endian) from the given memory location</td>
+    </tr>
+    <tr>
+      <td><code>peek_s16_LE</code></td>
+      <td>Reads a signed 16 bit word (little endian) from the given memory location</td>
+    </tr>
+    <tr>
+      <td><code>peek_s8</code></td>
+      <td>Reads a signed byte from the given memory location</td>
+    </tr>
+    <tr>
+      <td><code>peek_u16</code></td>
+      <td>Reads an unsigned 16 bit word from the given memory location</td>
+    </tr>
+    <tr>
+      <td><code>peek_u16_BE</code></td>
+      <td>Reads an unsigned 16 bit word (big endian) from the given memory location</td>
+    </tr>
+    <tr>
+      <td><code>peek_u16_LE</code></td>
+      <td>Reads an unsigned 16 bit word (little endian) from the given memory location</td>
+    </tr>
+    <tr>
+      <td><code>peek_u8</code></td>
+      <td>Reads an unsigned byte from the given memory location</td>
+    </tr>
+    <tr>
+      <td><code>poke</code>, <code>poke8</code></td>
+      <td>Writes a byte to the given memory location. Use <code>dpoke</code> to only write if the value to be written is different from the current value.</td>
+    </tr>
+    <tr>
+      <td><code>poke16</code>, <code>poke16_LE</code>, <code>poke16_BE</code></td>
+      <td>Writes a 16 bit word (little/big endian) to the given memory location</td>
     </tr>
     <tr>
       <td><code>psg_log</code></td>
-      <td>Log or replay PSG register values in binary format</td>
+      <td>Logs or replays PSG register values in binary format</td>
     </tr>
     <tr>
       <td><code>ram_watch</code></td>
-      <td>Add or remove RAM watch addresses to/from the list on the right side of the screen, useful for debugging or tool assisted speedrunning (TAS)</td>
+      <td>Adds or removes RAM watch addresses to/from the list on the right side of the screen, useful for debugging or tool assisted speedrunning (TAS)</td>
     </tr>
     <tr>
       <td><code>reg</code></td>
-      <td>Read or write CPU registers</td>
+      <td>Reads or writes CPU registers</td>
     </tr>
     <tr>
       <td><code>reg_log</code></td>
-      <td>Log or replay register values for the specified debuggable in ASCII format</td>
+      <td>Logs or replays register values for the specified debuggable in ASCII format</td>
+    </tr>
+    <tr>
+      <td><code>reverse_bookmarks</code></td>
+      <td>Controls the reverse bookmarks functionality</td>
     </tr>
     <tr>
       <td><code>rom_info</code></td>
@@ -2351,43 +2933,59 @@
     </tr>
     <tr>
       <td><code>run_to</code></td>
-      <td>Execute instructions until the PC reaches the specified address</td>
+      <td>Executes instructions until the PC reaches the specified address</td>
+    </tr>
+    <tr>
+      <td><code>save_breakpoints</code></td>
+      <td>Saves all breakpoints subtypes (breakpoints, watchpoints, conditions) to a given file</td>
     </tr>
     <tr>
       <td><code>save_debuggable</code></td>
-      <td>Save the (partial) content of a debuggable to a file</td>
+      <td>Saves the (partial) content of a debuggable to a file</td>
     </tr>
     <tr>
       <td><code>save_msx_screen</code></td>
       <td>Saves the current MSX screen into an MSX compatible binary file (BLOAD format).</td>
     </tr>
     <tr>
+      <td><code>save_session</code>, <code>load_session</code>, <code>list_sessions</code>, <code>delete_session</code></td>
+      <td>Saves/restores the state of all running machines as a named session, see also <code><a class="internal" href="#enable_session_management">enable_session_management</a></code></td>
+    </tr>
+    <tr>
       <td><code>save_to_file</code></td>
       <td>Helper function to save data (e.g. the output of another command) to a file.</td>
     </tr>
     <tr>
+      <td><code>sdcdb</code></td>
+      <td>Source level debugger for programs compiled with SDCC, using its CDB file (still work in progress), see also the <a class="external" href="user.html#sdcdb">User's Manual</a></td>
+    </tr>
+    <tr>
       <td><code>setcolor</code></td>
-      <td>Change V99x8 palette settings</td>
+      <td>Changes V99x8 palette settings</td>
+    </tr>
+    <tr>
+      <td><code>set_help_proc</code></td>
+      <td>Associates help text with a Tcl proc</td>
     </tr>
     <tr>
       <td><code>set_help_text</code></td>
-      <td>Associate help text with a Tcl proc</td>
+      <td>Associates help text with a Tcl proc</td>
     </tr>
     <tr>
       <td><code>set_tabcompletion_proc</code></td>
-      <td>Associate tab completion with a Tcl proc</td>
+      <td>Associates tab completion with a Tcl proc</td>
     </tr>
     <tr>
       <td><code>showdebuggable</code></td>
-      <td>Print the content of a debuggable in a table</td>
+      <td>Prints the content of a debuggable in a table</td>
     </tr>
     <tr>
       <td><code>showmem</code></td>
-      <td>Print the content of memory in a table</td>
+      <td>Prints the content of memory in a table</td>
     </tr>
     <tr>
       <td><code>show_osd</code></td>
-      <td>Print an overview of the defined OSD elements</td>
+      <td>Prints an overview of the defined OSD elements</td>
     </tr>
     <tr>
       <td><code>shuffler</code></td>
@@ -2395,71 +2993,99 @@
     </tr>
     <tr>
       <td><code>skip_instruction</code></td>
-      <td>Skip the current CPU instruction</td>
+      <td>Skips the current CPU instruction</td>
     </tr>
     <tr>
       <td><code>stack</code></td>
-      <td>Print the top of the CPU stack</td>
+      <td>Prints the top of the CPU stack</td>
+    </tr>
+    <tr>
+      <td><code>start_of_frame</code></td>
+      <td>Rewinds to the start of the current frame</td>
+    </tr>
+    <tr>
+      <td><code>step</code></td>
+      <td>Same as step_in</td>
     </tr>
     <tr>
       <td><code>step_in</code></td>
-      <td>Execute one CPU instruction, go into subroutines</td>
+      <td>Executes one CPU instruction, go into subroutines</td>
     </tr>
     <tr>
       <td><code>step_over</code></td>
-      <td>Execute one CPU instruction, but don't go into subroutines</td>
+      <td>Executes one CPU instruction, but don't go into subroutines</td>
     </tr>
     <tr>
       <td><code>step_out</code></td>
-      <td>Step out of the current subroutine</td>
+      <td>Steps out of the current subroutine</td>
     </tr>
     <tr>
       <td><code>step_back</code></td>
-      <td>Step one instruction back in time</td>
+      <td>Steps one instruction back in time</td>
+    </tr>
+    <tr>
+      <td><code>symboltracer</code></td>
+      <td>Profiler that shows function calls in the Trace Viewer of the debugger. Functions to trace come from a symbol file, or can be toggled per symbol via the right-click menu in the Symbol Manager.</td>
+    </tr>
+    <tr>
+      <td><code>tcl_bridge</code></td>
+      <td>Lets MSX software execute Tcl commands via I/O port 6 (<code>tcl_bridge start</code> to enable it)</td>
     </tr>
     <tr>
       <td><code>text_echo</code></td>
-      <td>Echo all printed MSX text on stderr</td>
+      <td>Echoes all printed MSX text on stderr</td>
+    </tr>
+    <tr>
+      <td><code>toggle_breaked</code></td>
+      <td>Toggles breaked status</td>
     </tr>
     <tr>
       <td><code>toggle_cursors</code></td>
-      <td>Show (or hide) a widget which shows which keys are pressed</td>
+      <td>Shows (or hides) a widget which shows which keys are pressed</td>
     </tr>
     <tr>
       <td><code>toggle_frame_counter</code></td>
-      <td>Show (or hide) a widget which shows the current frame number since start-up</td>
+      <td>Shows (or hides) a widget which shows the current frame number since start-up</td>
     </tr>
     <tr>
       <td><code>toggle_freq</code></td>
-      <td>Switch between PAL/NTSC</td>
+      <td>Switches between PAL/NTSC</td>
     </tr>
     <tr>
-      <td><code>toggle_mog_overlay</code></td>
-      <td>Enable (or disable) graphical extra information and game hints when playing The Maze of Galious</td>
+      <td><code>toggle_metal_gear_overlay</code></td>
+      <td>Shows OSD widgets that help you play Metal Gear</td>
     </tr>
     <tr>
       <td><code>toggle_mog_editor</code></td>
-      <td>Enable (or disable) wall drawing and Popolon-placement with the mouse when playing The Maze of Galious; needs to have the MoG overlay enabled, see <code>toggle_mog_overlay</code></td>
+      <td>Enables (or disables) wall drawing and Popolon-placement with the mouse when playing The Maze of Galious; needs to have the MoG overlay enabled, see <code>toggle_mog_overlay</code></td>
+    </tr>
+    <tr>
+      <td><code>toggle_mog_overlay</code></td>
+      <td>Enables (or disables) graphical extra information and game hints when playing The Maze of Galious</td>
+    </tr>
+    <tr>
+      <td><code>toggle_movie_length_display</code></td>
+      <td>Toggles display of the movie length in the upper right corner</td>
     </tr>
     <tr>
       <td><code>toggle_music_keyboard</code></td>
-      <td>Enable (or disable) keyboard view of all existing music channels. EXPERIMENTAL! Be careful, it's very slow when many channels are present in the system</td>
+      <td>Enables (or disables) keyboard view of all existing music channels. EXPERIMENTAL! Be careful, it's very slow when many channels are present in the system</td>
     </tr>
     <tr>
       <td><code>toggle_nemesis_1_shield</code></td>
-      <td>Enable (or disable) an OSD drawn shield in Nemesis (Gradius) 1, all enemy objects will repel from it</td>
+      <td>Enables (or disables) an OSD drawn shield in Nemesis (Gradius) 1, all enemy objects will repel from it</td>
     </tr>
     <tr>
       <td><code>toggle_psg2scc</code></td>
-      <td>Enable (or disable) playing PSG sound on SCC</td>
+      <td>Enables (or disables) playing PSG sound on SCC</td>
     </tr>
     <tr>
       <td><code>toggle_scc_editor</code></td>
-      <td>Show a graphical view of the SCC chip(s) of the system, showing waveforms and volume per channel and also enables you to edit the waveforms per channel</td>
+      <td>Shows a graphical view of the SCC chip(s) of the system, showing waveforms and volume per channel and also enables you to edit the waveforms per channel</td>
     </tr>
     <tr>
       <td><code>toggle_scc_viewer</code></td>
-      <td>Show a graphical view of the SCC chip(s) of the system, showing
+      <td>Shows a graphical view of the SCC chip(s) of the system, showing
           waveforms and volume per channel. In the future, this will be fully
           replaced by <span class="menu-reference">Main menu bar &rarr; Tools
           &rarr; SCC viewer</span>.
@@ -2467,15 +3093,15 @@
     </tr>
     <tr>
       <td><code>toggle_tron</code></td>
-      <td>Show (or hide) an OSD implementation of the MSX-BASIC TRON command to trace what the current line number of the BASIC interpreter is</td>
+      <td>Shows (or hides) an OSD implementation of the MSX-BASIC TRON command to trace what the current line number of the BASIC interpreter is</td>
     </tr>
     <tr>
       <td><code>toggle_vdp_access_test</code></td>
-      <td>Enable (or disable) reporting in the console when VDP I/O is done which could possibly cause data corruption on the slowest VDP (TMS9xxx), which is not emulated</td>
+      <td>Enables (or disables) reporting in the console when VDP I/O is done which could possibly cause data corruption on the slowest VDP (TMS9xxx), which is not emulated</td>
     </tr>
     <tr>
       <td><code>toggle_vdp_busy</code></td>
-      <td>Enable (or disable) display on the OSD how busy the VDP is</td>
+      <td>Enables (or disables) display on the OSD of how busy the VDP is</td>
     </tr>
     <tr>
       <td><code>type_via_keybuf</code></td>
@@ -2491,15 +3117,15 @@
     </tr>
     <tr>
       <td><code>v9990reg</code></td>
-      <td>Read or write a V9990 register</td>
+      <td>Reads or writes a V9990 register</td>
     </tr>
     <tr>
       <td><code>v9990regs</code></td>
-      <td>Print an overview of all V9990 registers</td>
+      <td>Prints an overview of all V9990 registers</td>
     </tr>
     <tr>
       <td><code>vdpreg</code></td>
-      <td>Read or write a V99x8 register</td>
+      <td>Reads or writes a V99x8 register</td>
     </tr>
     <tr>
       <td><code>vdpstatus</code></td>
@@ -2515,11 +3141,19 @@
     </tr>
     <tr>
       <td><code>vgm_rec</code></td>
-      <td>Record the music played by PSG, MSX-MUSIC, MSX-AUDIO, OPL4 and SCC into a VGM file</td>
+      <td>Records the music played by PSG, MSX-MUSIC, MSX-AUDIO, OPL4 and SCC into a VGM file</td>
+    </tr>
+    <tr>
+      <td><code>vram2bmp</code></td>
+      <td>Saves a region of the video RAM as a BMP file</td>
     </tr>
     <tr>
       <td><code>vpeek/vpoke</code></td>
-      <td>Read/write bytes from/to video RAM</td>
+      <td>Reads/writes bytes from/to video RAM</td>
+    </tr>
+    <tr>
+      <td><code>watch_in_slot</code></td>
+      <td>Checks whether the address of the last watchpoint hit is in the specified slot (useful as watchpoint condition)</td>
     </tr>
   </table>
 
@@ -2528,6 +3162,7 @@
   <h2><a id="settings">Settings</a></h2>
 
   <p>Settings control many aspects of openMSX. Below, the available settings are listed and described. You can change setting values with the <code><a class="internal" href="#set">set</a></code> command.</p>
+
 
   <h3><a id="accuracy">accuracy</a></h3>
 
@@ -2578,6 +3213,7 @@
     </tr>
   </table>
 
+
   <h3><a id="audio-inputfilename">audio-inputfilename</a></h3>
 
   <p>Sets the audio file from which the wave input is read for the sampler.</p>
@@ -2605,6 +3241,7 @@
   <div class="note">
     Note: The file is fully read into memory, so under Linux/UNIX do not attempt to read from a device node such as <code>/dev/dsp</code>.
   </div>
+
 
   <h3><a id="autoruncassettes">autoruncassettes</a></h3>
 
@@ -2639,10 +3276,13 @@
     Note: Autorun works practically always for cassette images in the CAS and TSX formats. If that fails or for WAV files, openMSX will try to find a hint of the loading instruction (in upper case) in the filename.
   </div>
 
+
   <h3><a id="autorunlaserdisc">autorunlaserdisc</a></h3>
 
   <p>Switches the "auto-run laserdisc" feature on or off. When it's enabled, openMSX will try to type the proper loading
   instruction when a laserdisc is inserted.</p>
+
+  <p>Note that this setting is only available when the Pioneer PX-7 or Pioneer PX-V60 MSX machine is being emulated, and only when openMSX was built with Laserdisc support (Laserdisc support is an optional compile-time feature).</p>
 
   <div class="subsectiontitle">
     usage:
@@ -2668,6 +3308,7 @@
     </tr>
   </table>
 
+
   <h3><a id="auto_enable_reverse">auto_enable_reverse</a></h3>
 
   <p>Using the <code><a class="internal" href="#reverse">reverse</a></code> feature comes at a small memory and performance cost. Therefore it has to be enabled before it can be used. This setting controls whether the reverse feature should automatically be activated when openMSX starts. While with desktop computers this generally won't be a problem, the performance drop might be more noticeable on older/smaller handheld devices.</p>
@@ -2691,9 +3332,11 @@
     </tr>
   </table>
 
+
   <h3><a id="auto_save_replay">auto_save_replay</a></h3>
 
   <p>Enable this setting to make automatic backups of your current replay. The replay is saved to the filename specified in the <code>auto_save_replay_filename</code> setting (default: "auto_save") at an interval as specified by the <code>auto_save_replay_interval</code> setting (default: 30 seconds). The interval is in real clock time, not in MSX time.</p>
+
 
   <h3><a id="blur">blur</a></h3>
 
@@ -2721,6 +3364,7 @@
     Note: Only some <a class="internal" href="#scale_algorithm">scale algorithms</a> apply horizontal blur; the default algorithm "simple" does.
   </div>
 
+
   <h3><a id="bootsector">bootsector</a></h3>
 
   <p>Sets the boot sector type for DirAsDSK. Default: DOS2. Only relevant on turboR, because it boots differently
@@ -2743,6 +3387,7 @@
       <td>Use a DOS1 boot sector</td>
     </tr>
   </table>
+
 
   <h3><a id="brightness">brightness</a></h3>
 
@@ -2767,6 +3412,7 @@
       <td>Make the video output a bit brighter than default</td>
     </tr>
   </table>
+
 
   <h3><a id="cmdtiming">cmdtiming</a></h3>
 
@@ -2801,6 +3447,7 @@
   <div class="note">
     Note: When set to <code>broken</code> the emulated MSX acts different from a real MSX. This might cause some software to fail.
   </div>
+
 
   <h3><a id="color_matrix">color_matrix</a></h3>
 
@@ -2846,6 +3493,7 @@
     Note: It is often more convenient to use the <code><a class="internal" href="#monitor_type">monitor_type</a></code> command.
   </div>
 
+
   <h3><a id="console">console</a></h3>
 
   <p>Turns the openMSX on-screen console on or off.</p>
@@ -2874,6 +3522,7 @@
     </tr>
   </table>
 
+
   <h3><a id="contrast">contrast</a></h3>
 
   <p>Controls the contrast of the video output. Can be between -100 and 100. Lower values are less contrast, higher values are more contrast. The default is 0, which is neutral.</p>
@@ -2898,9 +3547,10 @@
     </tr>
   </table>
 
+
   <h3><a id="cputrace">cputrace</a></h3>
 
-  <p>Enable/disable CPU instruction tracing. When enabled, the state of the CPU (Z80/R800) is printed on stdout after every instruction. This creates a lot of output and slows down emulation considerably, but it can be very useful for debugging.</p>
+  <p>Enable/disable CPU instruction tracing. When enabled, for every instruction the address, the disassembled instruction and the CPU (Z80/R800) registers are printed on stderr. The register values are the ones from before that instruction is executed. This creates a lot of output and slows down emulation considerably, but it can be very useful for debugging.</p>
 
   <div class="subsectiontitle">
     usage:
@@ -2925,6 +3575,7 @@
       <td>Disables CPU tracing</td>
     </tr>
   </table>
+
 
   <h3><a id="debugoutput">Debug Device output</a></h3>
 
@@ -2966,6 +3617,7 @@
     Note: This setting only exists if the <code>debugdevice</code> extension is present in the current MSX machine.
   </div>
 
+
   <h3><a id="default_machine">default_machine</a></h3>
 
   <p>Selects the default MSX model. openMSX uses this machine when it is started without the <code>-machine</code> option and without the <code>-setup</code> option and the <code><a class="internal" href="#default_setup">default_setup</a></code> setting is empty or pointing to a non-existing setup. This is a typical setting that should be saved, see also <a class="internal" href="#save_settings"><code>save_settings</code></a>.</p>
@@ -2990,6 +3642,7 @@
       <td>Use the turboR GT the next time openMSX is started</td>
     </tr>
   </table>
+
 
   <h3><a id="default_setup">default_setup</a></h3>
 
@@ -3019,6 +3672,7 @@
   <div class="note">
     If you set this setting to the same value as the <code><a class="internal" href="#save_setup_at_exit_name">save_setup_at_exit_name</a></code> setting and have the <code><a class="internal" href="#save_setup_at_exit_depth">save_setup_at_exit_depth</a></code> setting set to another depth than <code>none</code> , openMSX will automatically continue with the last setup when being started up again (and no other machine or setup is specified).
   </div>
+
 
   <h3><a id="DirAsDSKmode">DirAsDSKmode</a></h3>
 
@@ -3205,6 +3859,7 @@
   <p>Sessions can also be saved manually with the command <code>save_session</code>, and explicitly loaded with <code>load_session</code>. A list of saved sessions can be retrieved with <code>list_sessions</code>.
   </p>
 
+
   <h3><a id="fastforward">fastforward</a></h3>
 
   <p>Chooses between normal speed (off) and fastforward speed (on).</p>
@@ -3233,6 +3888,7 @@
     </tr>
   </table>
 
+
   <h3><a id="fastforwardspeed">fastforwardspeed</a></h3>
 
   <p>Sets the emulation speed relative to the speed of a real MSX when we are running in <a class="internal" href="#fastforward">fastforward mode</a>. Speed 100 means as fast as a real MSX, lower values are slower than real MSX, higher values are faster than real MSX.</p>
@@ -3254,6 +3910,7 @@
       <td>Sets new fastforward speed to &lt;num&gt;% of real time</td>
     </tr>
   </table>
+
 
   <h3><a id="frequency">frequency</a></h3>
 
@@ -3308,6 +3965,7 @@
     </tr>
   </table>
 
+
   <h3><a id="fullscreen">fullscreen</a></h3>
 
   <p>Switch to/from fullscreen mode.</p>
@@ -3335,6 +3993,7 @@
       <td>Switch to windowed mode</td>
     </tr>
   </table>
+
 
   <h3><a id="fullspeedwhenloading">fullspeedwhenloading</a></h3>
 
@@ -3366,6 +4025,7 @@
     </tr>
   </table>
 
+
   <h3><a id="full_stretch">full_stretch</a></h3>
 
   <p>Stretches the image to fill the entire screen when in fullscreen mode. This setting is useful when you want to use the full screen real estate, for example when displaying 4:3 content on a 16:9 monitor, or when you prefer to eliminate any black borders around the image.</p>
@@ -3390,6 +4050,7 @@
       <td>Disable full screen stretching</td>
     </tr>
   </table>
+
 
   <h3><a id="gamma">gamma</a></h3>
 
@@ -3417,6 +4078,7 @@
     </tr>
   </table>
 
+
   <h3><a id="glow">glow</a></h3>
 
   <p>Sets the amount of afterglow effect: 0 is off and 100 is a very heavy afterglow.</p>
@@ -3438,6 +4100,7 @@
       <td>Change the amount of afterglow</td>
     </tr>
   </table>
+
 
   <h3><a id="grabinput">grabinput</a></h3>
 
@@ -3468,6 +4131,7 @@
       <td>Stops grabbing all input events</td>
     </tr>
   </table>
+
 
   <h3><a id="horizontal_stretch">horizontal_stretch</a></h3>
 
@@ -3501,6 +4165,7 @@
     <code>set horizontal_stretch 280</code> (default: show all generated border pixels, so that all border demo effects are still visible)<br />
     <code>set horizontal_stretch 256</code> (borders are not visible at all; doesn't work well in combination with set-adjust)
   </div>
+
 
   <h3><a id="inputdelay">inputdelay</a></h3>
 
@@ -3598,10 +4263,11 @@
   </table>
 
 
-  <h3><a id="msxjoystickN_config">msxjoystick&lt;n&gt;_config/joymega&lt;n&gt;_config</a></h3>
+  <h3><a id="msxjoystickN_config">msxjoystick&lt;n&gt;_config/joymega&lt;n&gt;_config/joyhandle&lt;n&gt;_config/colecojoystick&lt;n&gt;_config</a></h3>
 
   <p>This setting configures how the buttons/axis/keys of the host are
-  mapped to the inputs of the emulated MSX joysticks or JoyMega devices. For many
+  mapped to the inputs of the emulated MSX joysticks, JoyMega devices,
+  Panasonic FS-JH1 Joy Handles or ColecoVision controllers. For many
   host controllers the initial value of this setting provides an acceptable default
   mapping. But depending on your controller type and taste you may want to tweak
   it.</p>
@@ -3616,6 +4282,11 @@
   <code>RIGHT</code>, <code>UP</code>, <code>DOWN</code>, <code>A</code> and
   <code>B</code>. For the JoyMega devices, add <code>C</code>, <code>X</code>,
   <code>Y</code>, <code>Z</code>, <code>SELECT</code> and <code>START</code>.
+  For the Joy Handle, add <code>WHEEL</code>, which takes an analog host axis
+  (e.g. <code>joy1 axis0</code>). The ColecoVision controllers have
+  <code>L</code> and <code>R</code> instead of <code>A</code> and
+  <code>B</code>, plus the keypad keys <code>0</code>-<code>9</code>,
+  <code>*</code> and <code>#</code>.
   The corresponding dictionary-values are lists of boolean host
   inputs. Possible elements for these lists regarding host controller input are
   <code>joy&lt;n&gt; button&lt;m&gt;</code>, <code>joy&lt;n&gt; +axis&lt;m&gt;</code>,
@@ -3694,12 +4365,27 @@
   </table>
 
 
-  <h3><a id="joystickN_deadzone">joystick&lt;n&gt;_deadzone</a></h3>
+  <h3><a id="joystickN_deadzone">joystick&lt;n&gt;_deadzone / joystick&lt;n&gt;_midpoint / joystick&lt;n&gt;_saturation</a></h3>
 
-  <p>This setting configures how big the dead centre zone of an (analogue)
-  joystick is. This is expressed as a percentage: 0 means no dead zone, 100
-  means everything falls inside the dead zone. The setting is only available
-  when connected host analogue sticks are detected.</p>
+  <p>These settings configure how the position of an axis of an (analogue)
+  host joystick is translated into the strength of the emulated input. All
+  three are expressed as a percentage of the distance from the centre of the
+  axis: 0 is the centre, 100 is fully pushed. Fractional values are allowed.
+  The settings are only available when connected host analogue sticks are
+  detected.</p>
+
+  <ul>
+    <li><code>joystick&lt;n&gt;_deadzone</code>: the size of the dead centre
+    zone. Inputs below this threshold are clipped to zero. 0 means no dead
+    zone, 100 means everything falls inside the dead zone. The default is
+    25.</li>
+    <li><code>joystick&lt;n&gt;_saturation</code>: inputs above this threshold
+    give the maximum output. The default is 90.</li>
+    <li><code>joystick&lt;n&gt;_midpoint</code>: the input that gives
+    half-strength output. Between the dead zone and the saturation threshold
+    the output follows a curve through this point, which allows to select a
+    non-linear response. The default is 75.</li>
+  </ul>
 
   <div class="subsectiontitle">
     usage:
@@ -3712,6 +4398,15 @@
     <tr>
       <td><code>set joystick1_deadzone 25</code></td>
       <td>Set the size of the dead zone to &frac14; of the total range</td>
+    </tr>
+    <tr>
+      <td><code>set joystick1_saturation 100</code></td>
+      <td>Only give maximum output when the stick is pushed fully</td>
+    </tr>
+    <tr>
+      <td><code>set joystick1_midpoint 62.5</code></td>
+      <td>Put the half-strength point halfway between the dead zone (25) and
+      the saturation threshold (100), giving a linear response</td>
     </tr>
   </table>
 
@@ -3750,6 +4445,7 @@
     Note: This only works on MSX models for which the CODE/KANA key locks (e.g. Japanese MSX models and the Philips VG8010). On other models, this setting is ignored.
   </div>
 
+
   <h3><a id="kbd_code_kana_host_key">kbd_code_kana_host_key</a></h3>
 
   <p>Host key that maps to the MSX CODE/KANA key. By default right-ALT (RALT) key.</p>
@@ -3757,7 +4453,6 @@
   people with AZERTY host keyboard, on which the RALT key has a special function; on
   azerty keyboards it is called the ALT-GR key and not the right-ALT key and it's used to
   enter some special characters (some keys are tagged with 3 characters; normal, key+SHIFT, key+ALT-GR).</p>
-  <p>It is also useful for people with a Japanese (jp106) keyboard; they can map the HENKAN_MODE key (which is similar to the KANA Lock on Japanese MSX models) to the CODE/KANA key.</p>
 
   <div class="subsectiontitle">
     usage:
@@ -3775,13 +4470,8 @@
 
       <td>Binds the <a class="external" href="http://en.wikipedia.org/wiki/Menu_key">MENU key</a> on the host keyboard to the MSX CODE/KANA key</td>
     </tr>
-
-    <tr>
-      <td><code>set&nbsp;kbd_code_kana_host_key&nbsp;HENKAN_MODE</code></td>
-
-      <td>Binds the HENKAN_MODE key on the host keyboard to the MSX CODE/KANA key</td>
-    </tr>
   </table>
+
 
   <h3><a id="kbd_deadkey1_host_key">kbd_deadkey1_host_key</a></h3>
 
@@ -3901,6 +4591,30 @@
    will have to enter following additional command in the console: <code>unbind PAGEDOWN</code>.</p>
 
 
+  <h3><a id="kbd_disable_IME">kbd_disable_IME</a></h3>
+
+  <p>Only on Windows: disable the IME (Input Method Editor) of the host, to
+  avoid keyboard input problems in Kanji mode. Enabled by default.</p>
+
+  <div class="subsectiontitle">
+    usage:
+  </div>
+
+  <table>
+    <tr>
+      <td><code>set kbd_disable_IME</code></td>
+
+      <td>Shows the current setting</td>
+    </tr>
+
+    <tr>
+      <td><code>set kbd_disable_IME off</code></td>
+
+      <td>Keep the IME of the host enabled</td>
+    </tr>
+  </table>
+
+
   <h3><a id="kbd_mapping_mode">kbd_mapping_mode</a></h3>
 
   <p>The keyboard driver can work in several mapping modes: CHARACTER, POSITIONAL or KEY.</p>
@@ -3950,6 +4664,7 @@
 
   </table>
 
+
   <h3><a id="kbd_numkeypad_always_enabled">kbd_numkeypad_always_enabled</a></h3>
 
   <p>Some real MSX computers do not have a numeric keypad. openMSX will ignore
@@ -3976,6 +4691,7 @@
       <td>Enables numeric keypad, even if the emulated MSX does not have one</td>
     </tr>
   </table>
+
 
   <h3><a id="kbd_numkeypad_enter_key">kbd_numkeypad_enter_key</a></h3>
 
@@ -4009,6 +4725,7 @@
     </tr>
   </table>
 
+
   <h3><a id="kbd_trace_key_presses">kbd_trace_key_presses</a></h3>
 
   <p>Log SDL key code, SDL modifiers and Unicode value for each key that gets
@@ -4037,6 +4754,7 @@
     </tr>
 
   </table>
+
 
   <h3><a id="led">led_&lt;name&gt;</a></h3>
 
@@ -4075,6 +4793,7 @@
     </tr>
   </table>
 
+
   <h3><a id="master_volume">master_volume</a></h3>
 
   <p>Controls the overall openMSX volume. The volume of individual sound devices can be controlled with the <code><a class="internal" href="#soundchip_volume">&lt;soundchip&gt;_volume</a></code> settings.</p>
@@ -4096,6 +4815,7 @@
       <td>Sets master volume to 50%</td>
     </tr>
   </table>
+
 
   <h3><a id="maxframeskip">maxframeskip</a></h3>
 
@@ -4123,6 +4843,7 @@
     </tr>
   </table>
 
+
   <h3><a id="midi-in-readfilename">midi-in-readfilename</a></h3>
 
   <p>Sets the file from which the MIDI input is read. By default, it is set to <code>/dev/midi</code> when available.</p>
@@ -4145,6 +4866,7 @@
     </tr>
   </table>
 
+
   <h3><a id="midi-out-logfilename">midi-out-logfilename</a></h3>
 
   <p>Sets the file to which the MIDI output is logged. By default, it logs to <code>/dev/midi</code> when available.</p>
@@ -4166,6 +4888,7 @@
       <td>Log MIDI events to "mymidilog.dat"</td>
     </tr>
   </table>
+
 
   <h3><a id="minframeskip">minframeskip</a></h3>
 
@@ -4193,6 +4916,7 @@
       <td>Sets the number of frame skips</td>
     </tr>
   </table>
+
 
   <h3><a id="mode">mode</a></h3>
 
@@ -4241,6 +4965,7 @@
 
   <p>Note that this mode may change in future releases!</p>
 
+
   <h3><a id="mute">mute</a></h3>
 
   <p>Mute/unmute all sound output.</p>
@@ -4269,6 +4994,7 @@
     </tr>
   </table>
 
+
   <h3><a id="noise">noise</a></h3>
 
   <p>Controls the amount of Gaussian noise that is added to the video output. A small amount of noise can give a more authentic look to the video output on TFTs. Values can be between 0 and 100, where 0 is no noise and 100 is lots of noise.</p>
@@ -4292,6 +5018,7 @@
       <td>Add a moderate amount of noise</td>
     </tr>
   </table>
+
 
   <h3><a id="pause">pause</a></h3>
 
@@ -4325,6 +5052,7 @@
     Note: Some video settings cannot be applied to an already rendered frame and will therefore not take effect until openMSX is unpaused.
   </div>
 
+
   <h3><a id="pause_on_lost_focus">pause_on_lost_focus</a></h3>
 
   <p>When this setting is enabled, the emulation will be paused when the
@@ -4354,12 +5082,13 @@
     </tr>
   </table>
 
+
   <h3><a id="pointer_hide_delay">pointer_hide_delay</a></h3>
 
   <p>The amount of seconds before the mouse pointer will be automatically
   hidden after it got shown due to mouse activity. A negative amount means that
   it will never be hidden, an amount of 0 means that it will be always hidden.
-  By default the pointer is hidden 1 second after the last mouse activity.</p>
+  By default the pointer is hidden 2 seconds after the last mouse activity.</p>
 
   <div class="subsectiontitle">
     usage:
@@ -4391,6 +5120,7 @@
     </tr>
   </table>
 
+
   <h3><a id="power">power</a></h3>
 
   <p>Turn the power of the emulated MSX machine on or off.</p>
@@ -4419,6 +5149,7 @@
     </tr>
   </table>
 
+
   <h3><a id="printerlogfilename">printerlogfilename</a></h3>
 
   <p>Sets the file to which the printer logger writes.</p>
@@ -4441,11 +5172,12 @@
     </tr>
   </table>
 
+
   <h3><a id="print-resolution">print-resolution</a></h3>
 
-  <p>Sets the resolution (in dpi) for the emulated dot-matrix printer.</p>
+  <p>Sets the resolution (in dpi) for the emulated dot-matrix printers and the emulated MSX plotter.</p>
 
-  <p>The emulated printer 'prints' pages as PNG files. This settings determines the resolution of those images.</p>
+  <p>The emulated printers and plotter 'print' pages as PNG files. This setting determines the resolution of those images.</p>
 
   <div class="subsectiontitle">
     usage:
@@ -4464,6 +5196,7 @@
       <td>Sets resolution to 600 dpi</td>
     </tr>
   </table>
+
 
   <h3><a id="psg_detune_frequency">PSG_detune_frequency</a></h3>
 
@@ -4500,6 +5233,7 @@
   <div class="note">
     Note: It is often more convenient to use the <code><a class="internal" href="#psg_profile">psg_profile</a></code> command.
   </div>
+
 
   <h3><a id="psg_detune_percent">psg_detune_percent</a></h3>
 
@@ -4538,6 +5272,7 @@
     Note: It is often more convenient to use the <code><a class="internal" href="#psg_profile">psg_profile</a></code> command.
   </div>
 
+
   <h3><a id="psg_vibrato_frequency">PSG_vibrato_frequency</a></h3>
 
   <p>Sets the frequency of the vibrato (a periodic variation in a sound's frequency) effect.
@@ -4573,6 +5308,7 @@
   <div class="note">
     Note: It is often more convenient to use the <code><a class="internal" href="#psg_profile">psg_profile</a></code> command.
   </div>
+
 
   <h3><a id="psg_vibrato_percent">PSG_vibrato_percent</a></h3>
 
@@ -4611,9 +5347,11 @@
     Note: It is often more convenient to use the <code><a class="internal" href="#psg_profile">psg_profile</a></code> command.
   </div>
 
+
   <h3><a id="r800_freq">r800_freq / r800_freq_locked</a></h3>
 
   <p>These two settings control the R800 clock frequency. See <code><a class="internal" href="#z80_freq">z80_freq / z80_freq_locked</a></code> for details.</p>
+
 
   <h3><a id="renderer">renderer</a></h3>
 
@@ -4636,6 +5374,7 @@
       <td>Disable rendering completely</td>
     </tr>
   </table>
+
 
   <h3><a id="renshaturbo">renshaturbo</a></h3>
 
@@ -4662,6 +5401,7 @@
   <div class="note">
     Note: This setting is only available if the current MSX machine has hardware Ren-Sha Turbo support.
   </div>
+
 
   <h3><a id="resampler">resampler</a></h3>
 
@@ -4717,6 +5457,7 @@
     </tr>
   </table>
 
+
   <h3><a id="rs232-outputfilename">rs232-outputfilename</a></h3>
 
   <p>Sets the file to which the RS232-tester writes the data. Note that the
@@ -4741,6 +5482,7 @@
       <td>Write to "myrs232output.txt"</td>
     </tr>
   </table>
+
 
   <h3><a id="rs232-net-address">rs232-net-address</a></h3>
 
@@ -4776,6 +5518,7 @@
     </tr>
   </table>
 
+
   <h3><a id="rs232-net-ip232">rs232-net-ip232</a></h3>
 
   <p>Enable the use of the IP232 protocol when used in conjunction with the <code>TCPSer</code> software modem. Note that
@@ -4808,6 +5551,7 @@
     </tr>
 
   </table>
+
 
   <h3><a id="rtcmode">rtcmode</a></h3>
 
@@ -4843,6 +5587,7 @@
     </tr>
   </table>
 
+
   <h3><a id="samples">samples</a></h3>
 
   <p>Sets the size of the sound mixer buffer. Higher values help against buffer underruns (hickups), but increase the latency of the sound output.</p>
@@ -4864,6 +5609,7 @@
       <td>Use a mixing buffer of 1024 samples</td>
     </tr>
   </table>
+
 
   <h3><a id="save_settings_on_exit">save_settings_on_exit</a></h3>
 
@@ -4893,6 +5639,7 @@
     </tr>
   </table>
 
+
   <h3><a id="save_setup_at_exit_name">save_setup_at_exit_name</a></h3>
 
   <p>Specify the setup name to use when automatically saving the setup when exiting openMSX is active. See also the <code><a class="internal" href="#save_setup_at_exit_depth">save_setup_at_exit_depth</a></code> setting.</p>
@@ -4918,6 +5665,7 @@
     </tr>
 
   </table>
+
 
   <h3><a id="save_setup_at_exit_depth">save_setup_at_exit_depth</a></h3>
 
@@ -4955,6 +5703,7 @@
     If you enable this auto save of the setup and use the same name as for the <code><a class="internal" href="#default_setup">default_setup</a></code> setting, openMSX will automatically continue with the last setup when being started up again (and no other machine or setup is specified).
   </div>
 
+
   <h3><a id="scale_algorithm">scale_algorithm</a></h3>
 
   <p>Selects the algorithm used to transform MSX pixels to host pixels. The User's Manual contains <a class="external" href="user.html#scalers">more information about scalers</a>.
@@ -4984,6 +5733,7 @@
     </tr>
   </table>
 
+
   <h3><a id="scale_factor">scale_factor</a></h3>
 
   <p>Selects the scale factor. Scale factor &lt;n&gt; means the typical MSX pixel (MSX resolution 256&times;212) is mapped on &lt;n&gt; by &lt;n&gt; host pixels. For the moment the possible values are 2 to 4. In the future we may support a wider range or even non-integer values. The User's Manual contains <a class="external" href="user.html#scalers">more information about scalers</a>.</p>
@@ -5005,6 +5755,7 @@
       <td>Sets a new scale factor</td>
     </tr>
   </table>
+
 
   <h3><a id="scanline">scanline</a></h3>
 
@@ -5032,6 +5783,7 @@
     Note: Some scalers will not render scanlines at all.
   </div>
 
+
   <h3><a id="sound_driver">sound_driver</a></h3>
 
   <p>Select the sound output driver.</p>
@@ -5054,6 +5806,7 @@
     </tr>
   </table>
 
+
   <h3><a id="speed">speed</a></h3>
 
   <p>Sets the emulation speed relative to the speed of a real MSX. Speed 100 means as fast as a real MSX, lower values are slower than real MSX, higher values are faster than real MSX.</p>
@@ -5075,6 +5828,7 @@
       <td>Sets new emulation speed to &lt;num&gt;% of real time</td>
     </tr>
   </table>
+
 
   <h3><a id="soundchip_balance">&lt;soundchip&gt;_balance</a></h3>
 
@@ -5120,6 +5874,7 @@
     <code>set FMPAC_balance 0</code>
   </div>
 
+
   <h3><a id="soundchip_channel_record">&lt;soundchip&gt;_ch&lt;channel&gt;_record</a></h3>
 
   <p>Sets the filename to which the sound of an individual channel of
@@ -5156,6 +5911,7 @@
     <code>set SCC_ch1_record</code><br />
     <code>set PSG_ch3_record /tmp/PSG_ch3.wav</code>
   </div>
+
 
   <h3><a id="soundchip_channel_mute">&lt;soundchip&gt;_ch&lt;channel&gt;_mute</a></h3>
 
@@ -5199,6 +5955,7 @@
     <code>set SCC_ch5_mute off</code>
   </div>
 
+
   <h3><a id="soundchip_volume">&lt;soundchip&gt;_volume</a></h3>
 
   <p>Sets the volume for individual sound chips. The overall volume is controlled by the <code><a class="internal" href="#master_volume">master_volume</a></code> setting.
@@ -5232,6 +5989,7 @@
     <code>set "FMPAC_volume" 50</code>
   </div>
 
+
   <h3><a id="throttle">throttle</a></h3>
 
   <p>Sets throttle mode. In throttle mode the emulator tries to run at the specified speed relative to a real MSX (see <a class="internal" href="#speed">speed</a> command). When throttling is turned off the emulator runs as fast as possible.</p>
@@ -5259,6 +6017,7 @@
       <td>Turn throttle mode off (fast forward)</td>
     </tr>
   </table>
+
 
   <h3><a id="too_fast_vram_access">too_fast_vram_access</a></h3>
 
@@ -5288,7 +6047,7 @@
   </table>
 
 
-  <h3><a id="too_fast_vram_access_callback">too_fast_vram_access_callback</a></h3>
+  <h3><a id="too_fast_vram_access_callback">VDP.too_fast_vram_access_callback</a></h3>
 
   <p>Selects the Tcl procedure to be called when a too-fast-VRAM-access (read
   or write) has been detected. This is useful for debugging MSX programs that
@@ -5400,6 +6159,7 @@
     Note: If you use this setting often, it may be useful to bind it to a key on your PC keyboard. See the <code><a class="internal" href="#bind">bind</a></code> and <code><a class="internal" href="#toggle">toggle</a></code> commands.
   </div>
 
+
   <h3><a id="umr_callback">umr_callback</a></h3>
 
   <p>Selects the Tcl procedure to be called when an Uninitialized Memory Read has been detected. This is useful for debugging MSX programs: uninitialized memory is not guaranteed to have any particular value, so reading it is most likely a bug.</p>
@@ -5444,7 +6204,7 @@
 
   <h3><a id="vdpcmdtrace">vdpcmdtrace</a></h3>
 
-  <p>Enable/disable VDP command tracing. When enabled, every VDP command is logged on stdout. This is useful when debugging MSX programs that use the VDP command engine.</p>
+  <p>Enable/disable VDP command tracing. When enabled, every VDP command is logged on stderr. This is useful when debugging MSX programs that use the VDP command engine.</p>
 
   <div class="subsectiontitle">
     usage:
@@ -5470,13 +6230,14 @@
     </tr>
   </table>
 
+
   <h3><a id="videosource">videosource</a></h3>
 
   <p>Switch between video sources: <code>MSX</code> (V99x8, default when no
     Video 9000 is available), <code>GFX9000</code> (V9990),
     <code>Video9000</code> (V9990 superimposed on top of V99x8, default if
     available) and <code>Laserdisc</code> (for Palcom machines). There can be
-    even more video sources, e.g. offered by cartridges with a built-in VDP such as the Neos MA-20(V).
+    even more video sources, e.g. offered by cartridges with a built-in VDP such as the Neos MA-20(V) or the Franky.
   </p>
 
   <div class="subsectiontitle">
@@ -5506,6 +6267,7 @@
   <div class="note">
     Note: This setting is only available if multiple video sources are present.
   </div>
+
 
   <h3><a id="vsync">vsync</a></h3>
 
@@ -5537,6 +6299,7 @@
     </tr>
 
   </table>
+
 
   <h3><a id="v9990cmdtrace">v9990cmdtrace</a></h3>
 
@@ -5571,6 +6334,7 @@
    <code>video9000</code> extension is present.
   </div>
 
+
   <h3><a id="z80_freq">z80_freq / z80_freq_locked</a></h3>
 
   <p>These two settings control the Z80 clock frequency. When <code>z80_freq_locked</code> is true the emulated Z80 runs at the normal 3.579545 MHz (or possibly 5.369318 MHz on machines that are able to switch the CPU to 'turbo' mode, e.g. the Panasonic MSX2+ models). When <code>z80_freq_locked</code> is false the value of <code>z80_freq</code> is taken as the Z80 clock frequency. Note: the value of  <code>z80_freq</code> is by default the MSX Z80 standard of 3579545, so when <code>z80_freq</code> is untouched, setting <code>z80_freq_locked</code> to false will set the clock frequency of a CPU in 5.37 Mhz turbo mode back to 3.58 Mhz.</p>
@@ -5591,6 +6355,7 @@
     <code>bind F8 "toggle z80_freq_locked"</code><br />
   </div>
 
+
   <h3><a id="othersettings">other settings</a></h3>
 
   <p>Like with the commands, there are also some specialized settings, for which we only list a very brief overview. As always execute "<code>help setting &lt;setting-name&gt;</code>" to get a more detailed description of the setting.</p>
@@ -5599,6 +6364,30 @@
     <tr>
       <td><code>fast_cas_load_hack_enabled</code></td>
       <td>Enable a hack that lets you quickly load CAS files, without having openMSX convert them to WAV</td>
+    </tr>
+    <tr>
+      <td><code>Franky auto video switch</code></td>
+      <td>Automatically switch the <code><a class="internal" href="#videosource">videosource</a></code> between the MSX VDP and the Franky VDP, based on which one has interrupts enabled (default on)</td>
+    </tr>
+    <tr>
+      <td><code>msxpirom_bank</code>, <code>msxpirom_sltsl</code></td>
+      <td>The BANK and J3 SLTSL jumpers of the MSXPi; take effect at the next reset</td>
+    </tr>
+    <tr>
+      <td><code>msxpiserver_port</code></td>
+      <td>TCP port used to connect to the MSXPi server (default 5000)</td>
+    </tr>
+    <tr>
+      <td><code>plotter-charset</code>, <code>plotter-dipswitch4</code>, <code>plotter-pen-thickness</code></td>
+      <td>Character set (<code>international</code> or <code>din</code>), dip switch 4 (carriage return also does a line feed) and pen thickness (<code>standard</code> or <code>thick</code>) of the MSX plotter</td>
+    </tr>
+    <tr>
+      <td><code>rs232-raw-port</code></td>
+      <td>Host serial port used by the <code>rs232-raw</code> pluggable, e.g. <code>/dev/ttyS0</code> or <code>COM1</code></td>
+    </tr>
+    <tr>
+      <td><code>smxwifi-emulatedesp32-link-enabled</code>, <code>smxwifi-emulatedesp32-quickrcv-enabled</code></td>
+      <td>Report the WiFi link of the emulated ESP32 of the SMX WiFi as up, and use quick receive (assert WAIT when the UART FIFO is empty)</td>
     </tr>
   </table>
 

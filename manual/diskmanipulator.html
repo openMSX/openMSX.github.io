@@ -29,10 +29,21 @@
   of this document you will find some <a class="internal" href="#examples">examples of typical use</a>.</p>
 
   <div class="note">
-    Note: For now, this command does not work with SCSI/SD disks and drives!
-    So, you cannot create valid formatted SCSI hard disk images, SD card images
-    or manipulate files on hard disks formatted for use with a SCSI interface
-    or SD cards for an SD interface.
+    Note: hard disk like media (IDE and SCSI hard disks, SD cards) are only
+    understood when they have a Sunrise IDE, Beer IDE 1.9RC1 or Nextor
+    partition table, or no partition table at all (in which case the whole
+    image is treated as a single volume). Only FAT12 and FAT16 partitions can
+    be manipulated; FAT32 partitions are not supported. Images formatted by a
+    SCSI BIOS that uses yet another partition table layout will report
+    <code>No (or invalid) partition table.</code>
+  </div>
+
+  <div class="note">
+    Note: manipulating a hard disk, SD card or CompactFlash image while the
+    emulated MSX has it mounted can corrupt the image, because the MSX side
+    does not notice the change and keeps using its cached FAT information. Use
+    <code>set power off</code> first, or do the manipulation in a separate
+    openMSX instance.
   </div>
 
   <h2>General Syntax</h2>
@@ -44,7 +55,7 @@
 
   <p><code>&lt;command&gt;</code> specifies the action to be performed. The next section lists the commands available and explains them.</p>
 
-  <p><code>&lt;disk name&gt;</code> specifies the disk to operate on. Typical values are: <code><a class="external" href="commands.html#disk">diska</a></code>, <code>diskb</code>, <code><a class="external" href="commands.html#hd">hda</a></code> or the special <code><a class="external" href="commands.html#disk">virtual_drive</a></code> device. <code>disk&lt;x&gt;</code> and <code>hd&lt;x&gt;</code> are the drives available to the running emulated MSX machine. This allows interaction with the currently used disk images.<br />
+  <p><code>&lt;disk name&gt;</code> specifies the disk to operate on. Typical values are: <code><a class="external" href="commands.html#disk">diska</a></code>, <code>diskb</code>, <code><a class="external" href="commands.html#hd">hda</a></code> or the special <code><a class="external" href="commands.html#disk">virtual_drive</a></code> device. <code>disk&lt;x&gt;</code> and <code>hd&lt;x&gt;</code> are the drives available to the running emulated MSX machine; <code>hd&lt;x&gt;</code> covers all hard disk like media, so IDE and SCSI hard disks as well as the SD cards of e.g. the MegaFlashROM SCC+ SD. This allows interaction with the currently used disk images.<br />
   In case the disk contains a Sunrise IDE, Beer IDE 1.9RC1 or Nextor compatible partition table you can add a partition number (starting at 1) to the disk name to specify on which partition the command will act. For example <code>hda2</code> is the second partition on the master IDE disk, <code>hdb3</code> is the third partition on the slave IDE disk.</p>
 
   <p><code>&lt;command arguments&gt;</code> depend upon the command involved, see the detailed descriptions of the commands below.</p>
@@ -60,6 +71,8 @@
 
     <li><a class="internal" href="#create">create</a></li>
 
+    <li><a class="internal" href="#delete">delete</a></li>
+
     <li><a class="internal" href="#dir">dir</a></li>
 
     <li><a class="internal" href="#export">export</a></li>
@@ -71,6 +84,8 @@
     <li><a class="internal" href="#mkdir">mkdir</a></li>
 
     <li><a class="internal" href="#partition">partition</a></li>
+
+    <li><a class="internal" href="#rename">rename</a></li>
 
     <li><a class="internal" href="#savedsk">savedsk</a></li>
   </ol>
@@ -138,6 +153,23 @@
     <li>M or m -&gt; size in megabytes</li>
   </ul>
 
+  <h3><a id="delete">delete</a></h3>
+
+  <div class="subsectiontitle">
+    syntax:
+  </div>
+
+  <p><code>diskmanipulator delete &lt;disk name&gt; &lt;MSX
+  entry&gt;</code></p>
+
+  <div class="subsectiontitle">
+    explanation:
+  </div>
+
+  <p>This will delete the given file or directory from the current working
+  directory (see <code><a class="internal" href="#chdir">chdir</a></code>). A
+  directory is deleted together with everything in it.</p>
+
   <h3><a id="dir">dir</a></h3>
 
   <div class="subsectiontitle">
@@ -160,16 +192,17 @@
   </div>
 
   <p><code>diskmanipulator export &lt;disk name&gt; &lt;host
-  directory&gt;</code></p>
+  directory&gt; [&lt;file|subdir&gt;...]</code></p>
 
   <div class="subsectiontitle">
     explanation:
   </div>
 
-  <p>This will export the files and subdirectories from the disk
+  <p>This will export the <code>&lt;file&gt;</code> or <code>&lt;subdir&gt;</code> from the disk
   inserted in <code>&lt;disk name&gt;</code> to the <code>&lt;host directory&gt;</code> on
-  your host OS. The subdirectory that will be exported from the MSX
-  disk image is selected by the <code><a class="internal" href="#chdir">chdir</a></code> command.</p>
+  your host OS from the subdirectory selected by the <code><a class="internal" href="#chdir">chdir</a></code>
+  command. If no <code>&lt;file&gt;</code> or <code>&lt;subdir&gt;</code> is specified, the whole
+  contents of the subdirectory are exported.</p>
 
   <h3><a id="format">format</a></h3>
 
@@ -197,7 +230,7 @@
     syntax:
   </div>
 
-  <p><code>diskmanipulator import &lt;disk name&gt; &lt;host
+  <p><code>diskmanipulator import &lt;disk name&gt; [-overwrite] &lt;host
   directory|host file&gt; ...</code></p>
 
   <div class="subsectiontitle">
@@ -210,7 +243,9 @@
   <code>&lt;host directory&gt;</code> into the inserted disk. Multiple files and
   directories can be specified at the same time. The place were the
   files will be added in the MSX directory structure is selected
-  by the <code><a class="internal" href="#chdir">chdir</a></code> command.</p>
+  by the <code><a class="internal" href="#chdir">chdir</a></code> command.
+  Files and directories that already exist on the MSX disk are not
+  overwritten, unless the <code>-overwrite</code> option is given.</p>
 
   <p>If you want to use wildcards when importing files, you will have to use
   the Tcl <a class="external" href="http://www.tcl.tk/man/tcl8.5/TclCmd/glob.htm">
@@ -252,46 +287,70 @@
   All the needed parent directories will be created if they do not
   yet exist.</p>
 
-  <h3><a id="savedsk">savedsk</a></h3>
+  <h3><a id="partition">partition</a></h3>
 
   <div class="subsectiontitle">
     syntax:
   </div>
 
   <p><code>diskmanipulator partition &lt;disk name&gt;
-    [&lt;size|option&gt; ...]</code></p>
-  
-    <div class="subsectiontitle">
-      explanation:
-    </div>
-  
-    <p>You can (re)partition existing disk images using this command.</p>
-  
-    <p>As many partitions as specified will be created, using one of the
-    following partition table formats according to the option given:</p>
-  
-    <ul>
-      <li><code>-dos1</code>: Standard MBR, Beer IDE 1.9 and Nextor compatible.
-          Max 4 partitions.</li>
-      <li><code>-dos2</code> (default): Sunrise IDE MBR, Sunrise IDE compatible.
-          Max 31 partitions.</li>
-      <li><code>-nextor</code>: Standard MBR / EBR, Nextor compatible.
-          Max 256 partitions.</li>
-    </ul>
-  
-    <p>After partitioning each partition will also be formatted appropriately,
-    see <a href="#format">format</a> for more details on that.</p>
-  
-    <p>You can specify the disk/partition sizes by using the following
-    postfixes:</p>
-  
-    <ul>
-      <li>S or s -&gt; size in sectors</li>
-      <li>B or b -&gt; size in bytes</li>
-      <li>K or k -&gt; size in kilobytes (default)</li>
-      <li>M or m -&gt; size in megabytes</li>
-    </ul>
-  
+  [&lt;size|option&gt; ...]</code></p>
+
+  <div class="subsectiontitle">
+    explanation:
+  </div>
+
+  <p>You can (re)partition existing disk images using this command.</p>
+
+  <p>As many partitions as specified will be created, using one of the
+  following partition table formats according to the option given:</p>
+
+  <ul>
+    <li><code>-dos1</code>: Standard MBR, Beer IDE 1.9 and Nextor compatible.
+        Max 4 partitions.</li>
+    <li><code>-dos2</code> (default): Sunrise IDE MBR, Sunrise IDE compatible.
+        Max 31 partitions.</li>
+    <li><code>-nextor</code>: Standard MBR / EBR, Nextor compatible.
+        Max 256 partitions.</li>
+  </ul>
+
+  <p>After partitioning each partition will also be formatted appropriately,
+  see <a class="internal" href="#format">format</a> for more details on that.</p>
+
+  <p>You can specify the disk/partition sizes by using the following
+  postfixes:</p>
+
+  <ul>
+    <li>S or s -&gt; size in sectors</li>
+    <li>B or b -&gt; size in bytes</li>
+    <li>K or k -&gt; size in kilobytes (default)</li>
+    <li>M or m -&gt; size in megabytes</li>
+  </ul>
+
+  <h3><a id="rename">rename</a></h3>
+
+  <div class="subsectiontitle">
+    syntax:
+  </div>
+
+  <p><code>diskmanipulator rename &lt;disk name&gt; &lt;old&gt;
+  &lt;new&gt;</code></p>
+
+  <div class="subsectiontitle">
+    explanation:
+  </div>
+
+  <p>This will rename the file or directory <code>&lt;old&gt;</code> in the
+  current working directory (see <code><a class="internal"
+  href="#chdir">chdir</a></code>) to <code>&lt;new&gt;</code>. An entry with
+  the new name may not already exist.</p>
+
+  <h3><a id="savedsk">savedsk</a></h3>
+
+  <div class="subsectiontitle">
+    syntax:
+  </div>
+
   <p><code>diskmanipulator savedsk &lt;disk name&gt;
   &lt;dskfilename&gt;</code></p>
 
