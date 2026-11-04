@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <meta name="referrer" content="no-referrer">
+  <title>openMSX &raquo; Download statistics</title>
+  <link href="../styles/keys_style.css" type="text/css" rel="stylesheet">
+  <style>
+    /* There's no navigation column on this page. */
+    div#content {
+      margin: 10px;
+    }
+    table.downloads {
+      border-collapse: collapse;
+      margin: 5px 0 15px 0;
+    }
+    table.downloads th, table.downloads td {
+      border: 1px solid rgb(160,160,160);
+      padding: 2px 6px;
+      text-align: left;
+    }
+    table.downloads th {
+      cursor: pointer;
+      user-select: none;
+    }
+    table.downloads th:hover {
+      text-decoration: underline;
+    }
+    table.downloads td {
+      white-space: nowrap;
+    }
+    table.downloads td.number {
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+    p.error {
+      font-weight: bold;
+      color: rgb(192,0,0);
+    }
+    table.downloads tfoot td, table.downloads td.total {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div id="content">
+    <h1>Download statistics</h1>
+    <p>
+      How often each file of our
+      <a href="https://github.com/openMSX/openMSX/releases">releases on GitHub</a>
+      was downloaded, as counted by GitHub. The numbers are fetched from
+      GitHub when you open this page. Click on a column header to sort by
+      that column (click again to reverse the order), and hover over a number
+      to see the files it consists of. *&nbsp;Downloads of the Windows debug
+      symbols aren't included in the totals.
+    </p>
+
+    <noscript>
+      <p>This page needs JavaScript to fetch the numbers from GitHub.</p>
+    </noscript>
+
+    <p id="status">Fetching the numbers from GitHub&hellip;</p>
+
+    <div id="perRelease">
+    <h2>Per release</h2>
+    <p>
+      <label>
+        Release:
+        <select id="release"></select>
+      </label>
+      <span id="releaseDate"></span>
+    </p>
+    <div id="latest"></div>
+    </div>
+
+    <div id="allReleases">
+
+    <h2>All releases</h2>
+    <p>
+      <label>
+        <input type="checkbox" id="prereleases">
+        Also show release candidates
+      </label>
+    </p>
+    <div id="all"></div>
+    </div>
+  </div>
+
+  <script>
+    "use strict";
+
+    // Each file of a release belongs to the first category whose pattern
+    // matches its name. The "debug" category isn't counted in the totals.
+    const categories = [
+      { key: "winInstaller", name: "Windows installer", re: /-windows-.*-bin-msi\.zip$/ },
+      { key: "winZip",       name: "Windows zip",       re: /-windows-.*-bin\.zip$/ },
+      { key: "macApple",     name: "macOS Apple",       re: /-mac-aarch64-bin\.dmg/ },
+      { key: "macIntel",     name: "macOS Intel",       re: /-mac-x86_64-bin\.dmg/ },
+      { key: "linux",        name: "Linux",             re: /-linux-.*-bin\.zip$/ },
+      { key: "flatpak",      name: "Flatpak",           re: /\.flatpak$/ },
+      { key: "source",       name: "Source code",       re: /^openmsx-[0-9][^-]*(-rc[0-9]+)?\.tar\.gz$/ },
+      { key: "debug",        name: "Debug symbols*",    re: /-pdb\.zip$/ },
+      { key: "other",        name: "Other",             re: /./ },
+    ];
+
+    // The order of the columns: like the matching order, but with the debug
+    // symbols last, because they aren't part of the total.
+    const shownOrder = [...categories.filter(c => c.key !== "debug"),
+                        ...categories.filter(c => c.key === "debug")];
+
+    function categorize(release) {
+      const result = {};
+      for (const c of categories) result[c.key] = { count: 0, files: [] };
+      for (const asset of release.assets) {
+        const c = categories.find(c => c.re.test(asset.name));
+        result[c.key].count += asset.download_count;
+        result[c.key].files.push(asset.name + ": " + format(asset.download_count));
+      }
+      return result;
+    }
+
+    function total(perCategory) {
+      let sum = 0;
+      for (const c of categories) {
+        if (c.key !== "debug") sum += perCategory[c.key].count;
+      }
+      return sum;
+    }
+
+    function format(n) {
+      return n.toLocaleString("en");
+    }
+
+    function releaseName(release) {
+      return release.name || release.tag_name;
+    }
+
+    // A column of a sortable table:
+    // - title:   the text of the header;
+    // - value:   row -> the value to sort on (a number or a string);
+    // - render:  (td, row) -> fills in the cell;
+    // - number:  true for columns with numbers: they're right aligned, and
+    //            sorted from large to small on the first click;
+    // - footer:  (optional) the text of the cell in the total row.
+    function textColumn(title, value, render) {
+      return { title, value, render: render || ((td, row) => { td.textContent = value(row); }) };
+    }
+
+    function countColumn(title, entry, footer, className) {
+      return {
+        title, number: true, footer,
+        value: row => entry(row).count,
+        render: (td, row) => {
+          const e = entry(row);
+          td.className = "number" + (className ? " " + className : "");
+          td.textContent = e.files.length ? format(e.count) : "";
+          td.title = e.files.join("\n");
+        },
+      };
+    }
+
+    // Makes a table with the given columns and rows, sorted on the column
+    // with index 'sortIndex' ('descending' for the direction). Clicking on a
+    // header sorts on that column; the total row (if any) stays at the end.
+    function sortableTable(columns, rows, sortIndex, descending, footerTitle) {
+      const table = document.createElement("table");
+      table.className = "downloads";
+      const headRow = table.createTHead().insertRow();
+      const body = table.createTBody();
+
+      const headers = columns.map((col, i) => {
+        const th = document.createElement("th");
+        th.addEventListener("click", () => {
+          if (i === sortIndex) {
+            descending = !descending;
+          } else {
+            sortIndex = i;
+            descending = !!col.number;
+          }
+          fill();
+        });
+        headRow.appendChild(th);
+        return th;
+      });
+
+      function fill() {
+        const col = columns[sortIndex];
+        const sorted = [...rows].sort((a, b) => {
+          const va = col.value(a), vb = col.value(b);
+          const cmp = typeof va === "number" ? va - vb : String(va).localeCompare(String(vb), "en", { numeric: true });
+          return descending ? -cmp : cmp;
+        });
+        body.replaceChildren();
+        for (const row of sorted) {
+          const tr = body.insertRow();
+          for (const c of columns) c.render(tr.insertCell(), row);
+        }
+        columns.forEach((c, i) => {
+          headers[i].textContent = c.title + (i === sortIndex ? (descending ? " ▼" : " ▲") : "");
+        });
+      }
+
+      if (footerTitle) {
+        const tr = table.createTFoot().insertRow();
+        columns.forEach((c, i) => {
+          const td = tr.insertCell();
+          if (i === 0) {
+            td.textContent = footerTitle;
+          } else if (c.footer !== undefined) {
+            td.textContent = format(c.footer);
+            td.className = "number";
+          }
+        });
+      }
+
+      fill();
+      return table;
+    }
+
+    // Only show the categories that have files in the shown releases.
+    function usedCategories(rows) {
+      return shownOrder.filter(c => rows.some(r => r.perCategory[c.key].files.length));
+    }
+
+    // The table with the downloads of one release, chosen in the selection
+    // box. Initially the latest release that isn't a release candidate.
+    function showPerRelease(rows) {
+      const select = document.getElementById("release");
+      rows.forEach((r, i) => {
+        const option = document.createElement("option");
+        option.value = i;
+        option.textContent = releaseName(r.release) +
+                             (r.release.prerelease ? " (release candidate)" : "");
+        select.appendChild(option);
+      });
+      const latest = rows.findIndex(r => !r.release.prerelease);
+      select.value = latest >= 0 ? latest : 0;
+
+      function show() {
+        const r = rows[select.value];
+        document.getElementById("releaseDate").textContent =
+          "(" + r.release.published_at.slice(0, 10) + ")";
+        // One row per category of this release.
+        const catRows = usedCategories([r]).map(c => ({ name: c.name, entry: r.perCategory[c.key] }));
+        const columns = [
+          textColumn("Download", c => c.name),
+          countColumn("Downloads", c => c.entry, r.total),
+        ];
+        document.getElementById("latest").replaceChildren(
+          sortableTable(columns, catRows, 1, true, "Total"));
+      }
+      select.addEventListener("change", show);
+      if (rows.length) show();
+    }
+
+    function showAll(rows) {
+      const shown = document.getElementById("prereleases").checked
+                  ? rows : rows.filter(r => !r.release.prerelease);
+      const used = usedCategories(shown);
+      const sum = f => shown.reduce((s, r) => s + f(r), 0);
+
+      const columns = [
+        textColumn("Release", r => releaseName(r.release), (td, r) => {
+          const a = document.createElement("a");
+          a.href = r.release.html_url;
+          a.textContent = releaseName(r.release);
+          td.appendChild(a);
+        }),
+        textColumn("Date", r => r.release.published_at.slice(0, 10)),
+        ...used.map(c => countColumn(c.name, r => r.perCategory[c.key],
+                                     sum(r => r.perCategory[c.key].count))),
+        countColumn("Total", r => ({ count: r.total, files: [""] }), sum(r => r.total), "total"),
+      ];
+      // Initially sorted on the date, newest first.
+      const table = sortableTable(columns, shown, 1, true, "All shown releases");
+      document.getElementById("all").replaceChildren(table);
+    }
+
+    async function fetchReleases() {
+      const releases = [];
+      for (let page = 1; ; ++page) {
+        let response;
+        try {
+          response = await fetch(
+            "https://api.github.com/repos/openMSX/openMSX/releases?per_page=100&page=" + page,
+            { headers: { "Accept": "application/vnd.github+json" } });
+        } catch (e) {
+          throw new Error("GitHub couldn't be reached (is there a network connection?)");
+        }
+        if (!response.ok) {
+          let reason = "GitHub answered " + response.status + " " + response.statusText;
+          if (response.headers.get("X-RateLimit-Remaining") === "0") {
+            // Without logging in, GitHub allows 60 requests per hour.
+            reason = "GitHub's limit of requests per hour was reached";
+            const reset = Number(response.headers.get("X-RateLimit-Reset"));
+            if (reset) {
+              reason += "; try again after " +
+                        new Date(reset * 1000).toLocaleTimeString("en");
+            }
+          }
+          throw new Error(reason);
+        }
+        const batch = await response.json();
+        releases.push(...batch);
+        if (batch.length < 100) return releases;
+      }
+    }
+
+    function show(releases) {
+      const rows = releases
+        .filter(r => !r.draft && r.published_at)
+        .sort((a, b) => b.published_at.localeCompare(a.published_at))
+        .map(release => {
+          const perCategory = categorize(release);
+          return { release, perCategory, total: total(perCategory) };
+        });
+      showPerRelease(rows);
+      showAll(rows);
+      document.getElementById("prereleases").addEventListener("change", () => showAll(rows));
+    }
+
+    async function main() {
+      const status = document.getElementById("status");
+      let releases;
+      try {
+        releases = await fetchReleases();
+      } catch (e) {
+        // e.g. no network connection, or GitHub's limit of requests reached.
+        status.textContent = "Couldn't fetch the numbers from GitHub: " + e.message + ".";
+        status.className = "error";
+        for (const id of ["perRelease", "allReleases"]) {
+          document.getElementById(id).hidden = true;
+        }
+        return;
+      }
+      status.textContent = "Numbers as of " + new Date().toLocaleString("en") + ".";
+      show(releases);
+    }
+
+    main();
+  </script>
+</body>
+</html>
